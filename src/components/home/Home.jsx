@@ -4,9 +4,10 @@ import { useForm } from "react-hook-form";
 import SelecionarPaisDestino from "./SeleccionarPaisDestino";
 
 const Home = () => {
+
+  // esta es la url de la api mymapi
   const urlPais =
     "https://api.mymappi.com/v2/geocoding/reverse?apikey=c829b7f1-0151-42ab-83b8-a7d1c7528d81";
-
   const { register, handleSubmit } = useForm();
   const [paisOrigen, setPaisOrigen] = useState("");
   const [modalSeleccionPais, setModalSeleccionPais] = useState(false)
@@ -14,7 +15,7 @@ const Home = () => {
     console.log(form);
   };
 
-  useEffect(() => {
+  useEffect(() => { 
     navigator.geolocation.getCurrentPosition(success);
     function success(pos) {
       const coordenadas = pos.coords;
@@ -22,13 +23,11 @@ const Home = () => {
       const longitud = coordenadas.longitude;
 
       paisOrigenGeolocalizacion(latitud, longitud);
-    }
+    };
   }, []);
-  const paisOrigenGeolocalizacion = (log, lat) => {
-    axios
-      .get(`${urlPais}&lat=${log}&lon=${lat}`)
+const paisOrigenGeolocalizacion = (log, lat) => {
+  axios.get(`${urlPais}&lat=${log}&lon=${lat}`)
       .then((res) => {
-
         setPaisOrigen(res.data.data.address.country);
       })
       .catch((error) => console.log(error));
@@ -52,7 +51,11 @@ const Home = () => {
             </label>
             <label htmlFor="">
               Vuelo sencillo
-              <input type="radio" name="sencillo" {...register("vuelo")} />
+              <input 
+                type="radio" 
+                name="sencillo" 
+                {...register("vuelo")} 
+              />
             </label>
           </div>
           <div className="Home__card--selection">

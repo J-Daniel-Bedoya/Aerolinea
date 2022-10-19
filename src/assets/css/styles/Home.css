@@ -1,5 +1,5 @@
 .Home {
-    width: 100%;
+    width: 100vw;
     height: 100vh;
     background-color: rgb(248, 225, 196);
     display: flex;
@@ -25,7 +25,7 @@
     column-gap: .5rem;
 }
 
-.Home__card--selection div {
+.Home__card--selection .selection {
     width: 45%;
     height: 4rem;
     background-color: blueviolet;

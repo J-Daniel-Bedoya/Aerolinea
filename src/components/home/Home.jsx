@@ -11,6 +11,8 @@ const Home = () => {
   const { register, handleSubmit } = useForm();
   const [paisOrigen, setPaisOrigen] = useState("");
   const [modalSeleccionPais, setModalSeleccionPais] = useState(false)
+  const [modalSeleccionFecha, setModalSeleccionFechas] = useState(false)
+  const [mostrarSeleccionPais, setMostrarSeleccionPais] = useState('');
   const submit = (form) => {
     console.log(form);
   };
@@ -32,6 +34,11 @@ const paisOrigenGeolocalizacion = (log, lat) => {
       })
       .catch((error) => console.log(error));
   };
+
+  const seleccionPais = (dato) => {
+    setMostrarSeleccionPais (dato)
+    setModalSeleccionPais (!modalSeleccionPais)
+  }
   return (
     <div className="Home">
       <div className="Home__card">
@@ -59,25 +66,24 @@ const paisOrigenGeolocalizacion = (log, lat) => {
             </label>
           </div>
           <div className="Home__card--selection">
-            <div>
+            <div className="selection">
               <p>{paisOrigen}</p>
               <p>pais origen</p>
             </div>
-            <div onClick={() => setModalSeleccionPais(!modalSeleccionPais)}>
-              <p>----</p>
+            <div className="selection" onClick={() => setModalSeleccionPais(!modalSeleccionPais)}>
+              <p>{mostrarSeleccionPais ? mostrarSeleccionPais : '---'}</p>
               <p>Selecione un destino</p>
-              {modalSeleccionPais ? <SelecionarPaisDestino /> : ""}
             </div>
-            <div>
+            <div className="selection">
               <p>Salid</p>
             </div>
-            <div>
+            <div className="selection">
               <p>Regreso</p>
             </div>
-            <div>
+            <div className="selection">
               <p>Cantidad pasajeros</p>
             </div>
-            <div>
+            <div className="selection">
               <p>Codigos de promoción</p>
             </div>
           </div>
@@ -87,6 +93,12 @@ const paisOrigenGeolocalizacion = (log, lat) => {
         </form>
         <div></div>
       </div>
+      {modalSeleccionPais && 
+        <SelecionarPaisDestino 
+        setModalSeleccionPais={setModalSeleccionPais} 
+        modalSeleccionPais={modalSeleccionPais}
+        seleccionPais={seleccionPais}
+      />}
     </div>
   );
 };

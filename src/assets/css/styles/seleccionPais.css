@@ -1,0 +1,36 @@
+#seleccionarPais{
+    position: absolute;
+    width: 100%;
+    height: 100vh;
+    padding: 0%;
+    margin: 0%;
+    background-color: rgba(0, 0, 0, 0.37);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.seleccionarPais__card{
+    width: 20rem;
+    height: 20rem;
+    background-color: cornflowerblue;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    padding: 2rem;
+    position: relative;
+}
+select{
+    width: 100%;
+    height: 2rem;
+
+}
+.fa-circle-xmark{
+    position: absolute;
+    top: 1rem;
+    right: 1.5rem;
+    font-size: 23px;
+    cursor: pointer;
+}
+.btnSeleccion{
+    padding: 5px;
+}

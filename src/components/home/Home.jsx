@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import SelecionarPaisDestino from "./SeleccionarPaisDestino";
+import imagenAvion from "../../../images/avion.png";
 
 const Home = () => {
   const urlPais =
@@ -9,9 +10,9 @@ const Home = () => {
 
   const { register, handleSubmit } = useForm();
   const [paisOrigen, setPaisOrigen] = useState("");
-  const [modalSeleccionPais, setModalSeleccionPais] = useState(false)
-  const [modalSeleccionFecha, setModalSeleccionFechas] = useState(false)
-  const [mostrarSeleccionPais, setMostrarSeleccionPais] = useState('');
+  const [modalSeleccionPais, setModalSeleccionPais] = useState(false);
+  const [modalSeleccionFecha, setModalSeleccionFechas] = useState(false);
+  const [mostrarSeleccionPais, setMostrarSeleccionPais] = useState("");
   const submit = (form) => {
     console.log(form);
   };
@@ -30,24 +31,28 @@ const Home = () => {
     axios
       .get(`${urlPais}&lat=${log}&lon=${lat}`)
       .then((res) => {
-
         setPaisOrigen(res.data.data.address.country);
       })
       .catch((error) => console.log(error));
   };
 
   const seleccionPais = (dato) => {
-    setMostrarSeleccionPais (dato)
-    setModalSeleccionPais (!modalSeleccionPais)
-  }
+    setMostrarSeleccionPais(dato);
+    setModalSeleccionPais(!modalSeleccionPais);
+  };
   return (
     <div className="Home">
+      <img src={imagenAvion} className="imgAvion" />
       <div className="Home__card">
-        <h2>Lorem ipsum dolor sit amet consectetur adipisicing</h2>
-        <p>Lorem ipsum dolor sit amet consectetur</p>
+        <h2>
+          Busca un nuevo destino y <br /> comienza la aventura.
+        </h2>
+        <p className="title_card2">
+          Descubre vuelos al mejor precio y perfectos para cualquier vieaje.
+        </p>
 
         <form onSubmit={handleSubmit(submit)}>
-          <div>
+          <div className="vuelo_style">
             <label htmlFor="">
               Vuelo redondo
               <input
@@ -63,12 +68,16 @@ const Home = () => {
             </label>
           </div>
           <div className="Home__card--selection">
-            <div className="selection">
+            <div className="selection" id="pais_org">
               <p>{paisOrigen}</p>
               <p>pais origen</p>
             </div>
-            <div className="selection" onClick={() => setModalSeleccionPais(!modalSeleccionPais)}>
-              <p>{mostrarSeleccionPais ? mostrarSeleccionPais : '---'}</p>
+            <div
+              className="selection"
+              onClick={() => setModalSeleccionPais(!modalSeleccionPais)}
+              id="pais_dest"
+            >
+              <p>{mostrarSeleccionPais ? mostrarSeleccionPais : "---"}</p>
               <p>Selecione un destino</p>
             </div>
             <div className="selection">
@@ -85,19 +94,19 @@ const Home = () => {
             </div>
           </div>
           <div>
-            <button>Vuelo</button>
+            <button className="btn_vuelo">Buscar vuelos</button>
           </div>
         </form>
         <div></div>
       </div>
-      {modalSeleccionPais && 
-        <SelecionarPaisDestino 
-        setModalSeleccionPais={setModalSeleccionPais} 
-        modalSeleccionPais={modalSeleccionPais}
-        seleccionPais={seleccionPais}
-      />}
+      {modalSeleccionPais && (
+        <SelecionarPaisDestino
+          setModalSeleccionPais={setModalSeleccionPais}
+          modalSeleccionPais={modalSeleccionPais}
+          seleccionPais={seleccionPais}
+        />
+      )}
     </div>
   );
 };
-
 export default Home;

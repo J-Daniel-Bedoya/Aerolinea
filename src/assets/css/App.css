@@ -3,7 +3,7 @@
 @import url('./styles/Home.css');
 @import url('./styles/seleccionPais.css');
 @import url('./styles/cantidadPersonas.css');
-
+@import url('./styles/pagos.css');
 
 *{
     margin: 0;

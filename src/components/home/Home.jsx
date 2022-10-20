@@ -3,7 +3,8 @@ import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form"; //esta es la librería para formularios
 import SelecionarPaisDestino from "./SeleccionarPaisDestino"; // este es el componente para seleccionar un país
 import SeleccionCantidadPersonas from "./SeleccionCantidadPersonas"; //este es el componente para seleccionar cantidad de personas
-
+import imagenAvion from "../../assets/imgs/avion.png";
+// import Pagos from "./Pagos";
 
 const Home = () => {
 
@@ -72,83 +73,86 @@ const paisOrigenGeolocalizacion = (log, lat) => {
 
   return (
     <div className="Home">
-      <img src={imagenAvion} className="imgAvion" />
-      <div className="Home__card">
-        <h2>
-          Busca un nuevo destino y <br /> comienza la aventura.
-        </h2>
-        <p className="title_card2">
-          Descubre vuelos al mejor precio y perfectos para cualquier vieaje.
-        </p>
 
-        <form onSubmit={handleSubmit(submit)}>
-          <div className="vuelo_style">
-            <label htmlFor="">
-              Vuelo redondo
-              <input
-                type="radio"
-                name="redondo"
-                {...register("vuelo")}
-                checked
-              />
-            </label>
-            <label htmlFor="">
-              Vuelo sencillo
-              <input 
-                type="radio" 
-                name="sencillo" 
-                {...register("vuelo")} 
-              />
-            </label>
-          </div>
-          <div className="Home__card--selection">
-            <div className="selection" id="pais_org">
-              <p>{paisOrigen}</p>
-              <p>pais origen</p>
+      <div className="Home__card">
+        <img src={imagenAvion} className="imgAvion" />
+        <div className="Home__card--content">
+          <h2>
+            Busca un nuevo destino y <br /> comienza la aventura.
+          </h2>
+          <p className="title_card2">
+            Descubre vuelos al mejor precio y perfectos para cualquier vieaje.
+          </p>
+
+          <form onSubmit={handleSubmit(submit)}>
+            <div className="vuelo_style">
+              <label htmlFor="">
+                Vuelo redondo
+                <input
+                  type="radio"
+                  name="redondo"
+                  {...register("vuelo")}
+                  checked
+                />
+              </label>
+              <label htmlFor="">
+                Vuelo sencillo
+                <input 
+                  type="radio" 
+                  name="sencillo" 
+                  {...register("vuelo")} 
+                />
+              </label>
             </div>
-            <div
-              className="selection"
-              onClick={() => setModalSeleccionPais(!modalSeleccionPais)}
-              id="pais_dest"
-            >
-              <p>{mostrarSeleccionPais ? mostrarSeleccionPais : "---"}</p>
-              <p>Selecione un destino</p>
-            </div>
-            <div className="selection">
-              <p>Salid</p>
-            </div>
-            <div className="selection">
-              <p>Regreso</p>
-            </div>
-            <div className="selection" onClick={() => setModalSeleccionCantidadPersonas(!modalSeleccionCantidadPersonas)}>
-              <b>Personas</b>
-              <div>
-                <p>{adultos>0 && ` ${adultos} Adultos`}</p>
-                <p>{niños>0 && `${niños} Niños`}</p>
-                <p>{bebes>0 && `${bebes} Bebés`}</p>
+            <div className="Home__card--selection">
+              <div className="selection" id="pais_org">
+                <p>{paisOrigen}</p>
+                <p>pais origen</p>
+              </div>
+              <div
+                className="selection"
+                onClick={() => setModalSeleccionPais(!modalSeleccionPais)}
+                id="pais_dest"
+              >
+                <p>{mostrarSeleccionPais ? mostrarSeleccionPais : "---"}</p>
+                <p>Selecione un destino</p>
+              </div>
+              <div className="selection">
+                <p>Salid</p>
+              </div>
+              <div className="selection">
+                <p>Regreso</p>
+              </div>
+              <div className="selection" onClick={() => setModalSeleccionCantidadPersonas(!modalSeleccionCantidadPersonas)}>
+                <b>Personas</b>
+                <div>
+                  <p>{adultos>0 && ` ${adultos} Adultos`}</p>
+                  <p>{niños>0 && `${niños} Niños`}</p>
+                  <p>{bebes>0 && `${bebes} Bebés`}</p>
+                </div>
+              </div>
+              <div className="selection">
+                <p>Codigos de promoción</p>
               </div>
             </div>
-            <div className="selection">
-              <p>Codigos de promoción</p>
+            <div className="Home__btn--submit">
+              <button className="btn_vuelo">Buscar vuelos</button>
             </div>
-          </div>
-          <div>
-            <button className="btn_vuelo">Buscar vuelos</button>
-          </div>
-        </form>
-        <div></div>
+          </form>
+          <div></div>
+        </div>
+        {modalSeleccionPais && 
+          <SelecionarPaisDestino 
+          setModalSeleccionPais={setModalSeleccionPais} 
+          modalSeleccionPais={modalSeleccionPais}
+          seleccionPais={seleccionPais}
+        />}
+        {modalSeleccionCantidadPersonas && 
+          <SeleccionCantidadPersonas 
+          totalPersonas={totalPersonas}
+          />
+        }
       </div>
-      {modalSeleccionPais && 
-        <SelecionarPaisDestino 
-        setModalSeleccionPais={setModalSeleccionPais} 
-        modalSeleccionPais={modalSeleccionPais}
-        seleccionPais={seleccionPais}
-      />}
-      {modalSeleccionCantidadPersonas && 
-        <SeleccionCantidadPersonas 
-        totalPersonas={totalPersonas}
-        />
-      }
 
     </div>
   );

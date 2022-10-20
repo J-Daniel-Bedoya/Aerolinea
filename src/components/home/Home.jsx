@@ -4,6 +4,7 @@ import { useForm } from "react-hook-form"; //esta es la librería para formulari
 import SelecionarPaisDestino from "./SeleccionarPaisDestino"; // este es el componente para seleccionar un país
 import SeleccionCantidadPersonas from "./SeleccionCantidadPersonas"; //este es el componente para seleccionar cantidad de personas
 
+
 const Home = () => {
 
   // esta es la url de la api mymapi
@@ -68,14 +69,20 @@ const paisOrigenGeolocalizacion = (log, lat) => {
     setBebes(bebes);
   };
 
+
   return (
     <div className="Home">
+      <img src={imagenAvion} className="imgAvion" />
       <div className="Home__card">
-        <h2>Lorem ipsum dolor sit amet consectetur adipisicing</h2>
-        <p>Lorem ipsum dolor sit amet consectetur</p>
+        <h2>
+          Busca un nuevo destino y <br /> comienza la aventura.
+        </h2>
+        <p className="title_card2">
+          Descubre vuelos al mejor precio y perfectos para cualquier vieaje.
+        </p>
 
         <form onSubmit={handleSubmit(submit)}>
-          <div>
+          <div className="vuelo_style">
             <label htmlFor="">
               Vuelo redondo
               <input
@@ -95,12 +102,16 @@ const paisOrigenGeolocalizacion = (log, lat) => {
             </label>
           </div>
           <div className="Home__card--selection">
-            <div className="selection">
+            <div className="selection" id="pais_org">
               <p>{paisOrigen}</p>
               <p>pais origen</p>
             </div>
-            <div className="selection" onClick={() => setModalSeleccionPais(!modalSeleccionPais)}>
-              <p>{mostrarSeleccionPais ? mostrarSeleccionPais : '---'}</p>
+            <div
+              className="selection"
+              onClick={() => setModalSeleccionPais(!modalSeleccionPais)}
+              id="pais_dest"
+            >
+              <p>{mostrarSeleccionPais ? mostrarSeleccionPais : "---"}</p>
               <p>Selecione un destino</p>
             </div>
             <div className="selection">
@@ -122,7 +133,7 @@ const paisOrigenGeolocalizacion = (log, lat) => {
             </div>
           </div>
           <div>
-            <button>Vuelo</button>
+            <button className="btn_vuelo">Buscar vuelos</button>
           </div>
         </form>
         <div></div>
@@ -138,8 +149,8 @@ const paisOrigenGeolocalizacion = (log, lat) => {
         totalPersonas={totalPersonas}
         />
       }
+
     </div>
   );
 };
-
 export default Home;

@@ -4,6 +4,7 @@
 @import url('./styles/seleccionPais.css');
 @import url('./styles/cantidadPersonas.css');
 @import url('./styles/pagos.css');
+@import url('./styles/seleccionarFecha.css');
 
 *{
     margin: 0;

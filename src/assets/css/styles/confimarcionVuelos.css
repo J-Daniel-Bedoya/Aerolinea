@@ -1,0 +1,71 @@
+.confirmacion_vuelos{
+    padding: 5% 5%;
+    background-color: darkgrey;
+    /* width: 100%;
+    display: flex;
+    flex-direction: row; */
+}
+/* .vuelo_salida{
+    display: flex;
+    height: 70%;
+}
+.info_reservacion{
+    display: flex;
+    height: 30%;
+} */
+.title_vuelo{
+    display: flex;
+    flex-direction: row;
+    gap: 40rem;
+    line-height: 10px;
+    margin-bottom: 40px;
+}
+.btn_cambiarVuelo{
+    width: 10rem;
+}
+.title_datos{
+    margin-bottom: 50px;
+}
+.info_vuelo{
+    display: flex;
+    flex-direction: row;
+    background-color: aquamarine;
+    gap: 3rem;
+    width: 100%;
+    height: 8rem;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+.maleta1{
+    display: flex;
+    flex-direction: column;
+    background-color: coral;
+    height: 60%;
+    width: 12%;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+.maleta2{
+    display: flex;
+    flex-direction: column;
+    background-color: coral;
+    height: 60%;
+    width: 12%;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+.maleta3{
+    display: flex;
+    flex-direction: column;
+    background-color: coral;
+    height: 60%;
+    width: 12%;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+

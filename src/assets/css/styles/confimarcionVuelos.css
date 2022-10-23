@@ -1,0 +1,97 @@
+.confirmacion_vuelos{
+    padding: 4rem;
+    background-color: darkgrey;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: space-evenly;
+    
+}
+
+.configuracionVuelos_container{
+    width: 70%;
+}
+
+.info_reservacion{
+    display: flex;
+    height: 30%;
+    background-color: lightgreen;
+    height: 30vh;
+    width: 20%;
+    line-height: 1.5rem;
+
+}
+.title_vuelo{
+    display: flex;
+    flex-direction: row;
+    gap: 40rem;
+    line-height: 10px;
+    margin-bottom: 40px;
+}
+.btn_cambiarVuelo{
+    width: 10rem;
+}
+.title_datos{
+    margin-bottom: 50px;
+}
+.info_vuelo{
+    display: flex;
+    flex-direction: row;
+    background-color: aquamarine;
+    gap: 3rem;
+    width: 100%;
+    height: 8rem;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+.maleta1{
+    display: flex;
+    flex-direction: column;
+    background-color: coral;
+    height: 60%;
+    width: 12%;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+.maleta2{
+    display: flex;
+    flex-direction: column;
+    background-color: coral;
+    height: 60%;
+    width: 12%;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+.maleta3{
+    display: flex;
+    flex-direction: column;
+    background-color: coral;
+    height: 60%;
+    width: 12%;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+.info_reservacion{
+    display: flex;
+    flex-direction: column;
+    padding: 2rem;
+}
+.info_pasajeros{
+    display: flex;
+    flex-direction: row;
+    gap: 10rem;
+}
+.info_salida{
+    display: flex;
+    flex-direction: row;
+    gap: 50px;
+}
+.info_hora{
+    display: flex;
+    flex-direction: row;
+    gap: 50px;
+}

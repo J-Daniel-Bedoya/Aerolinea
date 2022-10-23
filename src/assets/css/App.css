@@ -5,6 +5,9 @@
 @import url('./styles/cantidadPersonas.css');
 @import url('./styles/pagos.css');
 @import url('./styles/seleccionarFecha.css');
+@import url('./styles/confimarcionVuelos.css');
+
+
 
 *{
     margin: 0;

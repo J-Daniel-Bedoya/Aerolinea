@@ -1,9 +1,13 @@
-import React, { useState } from 'react'
+import axios from 'axios';
+import React, { useEffect, useState } from 'react'
  
-const SeleccionCantidadPersonas = ({totalPersonas}) => {
-  const [contadorAdultos, setContadorAdultos] = useState(0);
-  const [contadorNiños, setContadorNiños] = useState(0);
-  const [contadorBebes, setContadorBebes] = useState(0);
+
+const SeleccionCantidadPersonas = ({totalPersonas, adultos, niños, bebes, objetoApi}) => {
+
+  const [contadorAdultos, setContadorAdultos] = useState(objetoApi.totalPersonas.adultos);
+  const [contadorNiños, setContadorNiños] = useState(objetoApi.totalPersonas.niños);
+  const [contadorBebes, setContadorBebes] = useState(objetoApi.totalPersonas.bebes);
+
   return (
     <div className='cantidadPersonas'>
       <div className='catidadPersonas__card'>
@@ -14,7 +18,7 @@ const SeleccionCantidadPersonas = ({totalPersonas}) => {
           </div>
           <div className='content__acount'>
             <button onClick={() => setContadorAdultos(contadorAdultos-1)} disabled={contadorAdultos <= 0}>-</button>
-            <p>{contadorAdultos}</p>
+            <p>{contadorAdultos }</p>
             <button onClick={() => setContadorAdultos(contadorAdultos+1)} disabled={contadorAdultos >= 10}>+</button>
           </div>
         </div>

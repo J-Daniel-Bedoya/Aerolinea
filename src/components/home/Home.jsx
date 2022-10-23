@@ -19,9 +19,11 @@ const Home = () => {
   const [paisOrigen, setPaisOrigen] = useState(""); //este contiene el pais en el que recide la persona que hace la recervacion
   const [mostrarSeleccionPais, setMostrarSeleccionPais] = useState(''); //este contiene el nombre del país seleccionado
   // total de personas a viajar
-  const [adultos, setAdultos] = useState(null); //este es el total de adultos que viajaran
-  const [niños, setNiños] = useState(null); //este es el total de niños que viajaran
-  const [bebes, setBebes] = useState(null); //este es el total de bebés que viajaran
+  const [adultos, setAdultos] = useState(0); //este es el total de adultos que viajaran
+  const [niños, setNiños] = useState(0); //este es el total de niños que viajaran
+  const [bebes, setBebes] = useState(0); //este es el total de bebés que viajaran
+  // cambios
+  const [objetoApi, setObjetoApi] = useState({});
   // modales
   const [modalSeleccionPais, setModalSeleccionPais] = useState(false); // este es el boton del modal para selecionar pais
   const [modalSeleccionFecha, setModalSeleccionFechas] = useState(false); //este es el boton para selecionar fechas
@@ -41,7 +43,8 @@ const Home = () => {
         "bebes": bebes
       } 
     }
-    axios.put(`${apiInfoVuelos}`, registroVuelo)
+    axios.post(apiInfoVuelos, registroVuelo)
+    .then(res => console.log(res.data))
     .catch(error => console.log(error))
     navigate("/confirmacion_vuelos")
     
@@ -57,7 +60,12 @@ const Home = () => {
 
       paisOrigenGeolocalizacion(latitud, longitud);
     };
+    axios.get(apiInfoVuelos)
+    .then(res => {
+      setObjetoApi(res.data)
+    })
   }, []);
+  console.log(objetoApi)
 // esta funcion consume la APPI de mymappi para poder obtener el nombre del país de donde recide la persona
 const paisOrigenGeolocalizacion = (log, lat) => {
   axios.get(`${urlPais}&lat=${log}&lon=${lat}`)
@@ -123,7 +131,7 @@ const paisOrigenGeolocalizacion = (log, lat) => {
                 onClick={() => setModalSeleccionPais(!modalSeleccionPais)}
                 id="pais_dest"
               >
-                <p>{mostrarSeleccionPais ? mostrarSeleccionPais : "---"}</p>
+                <p>{objetoApi.Destino !== "" ? objetoApi.Destino : "---"}</p>
                 <p>Selecione un destino</p>
               </div>
 
@@ -139,9 +147,29 @@ const paisOrigenGeolocalizacion = (log, lat) => {
               <div className="selection" onClick={() => setModalSeleccionCantidadPersonas(!modalSeleccionCantidadPersonas)}>
                 <b>Personas</b>
                 <div>
-                  <p>{adultos>0 && ` ${adultos} Adultos`}</p>
-                  <p>{niños>0 && `${niños} Niños`}</p>
-                  <p>{bebes>0 && `${bebes} Bebés`}</p>
+                  <p>
+                    {
+                      objetoApi.totalPersonas?.adultos !== null ? 
+                      ` ${objetoApi.totalPersonas?.adultos} Adultos`:
+                      "--" 
+                      ||
+                      adultos !== null ? `${adultos} Adultos` : "--"
+                    }
+                  </p>
+                  <p>
+                    {
+                      objetoApi.totalPersonas?.niños !== null ? 
+                      `${objetoApi.totalPersonas?.niños} Niños`:
+                      "--"
+                    }
+                  </p>
+                  <p>
+                    {
+                      objetoApi.totalPersonas?.bebes !== null ? 
+                      `${objetoApi.totalPersonas?.bebes} Bebés`:
+                      "--"
+                    }
+                  </p>
                 </div>
               </div>
               <div className="selection">
@@ -167,6 +195,10 @@ const paisOrigenGeolocalizacion = (log, lat) => {
         {modalSeleccionCantidadPersonas && 
           <SeleccionCantidadPersonas 
           totalPersonas={totalPersonas}
+          adultos={adultos}
+          niños={niños}
+          bebes={bebes}
+          objetoApi={objetoApi}
           />
         }
       </div>

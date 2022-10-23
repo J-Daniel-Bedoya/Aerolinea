@@ -5,10 +5,7 @@ const ConfirmacionVuelos = () => {
   const navigate = useNavigate();
   return (
     <div className="confirmacion_vuelos">
-      <div className="info_reservacion">
-        <p>Tu reservacion</p>
-        <div></div>
-      </div>
+      <div className="configuracionVuelos_container">
       <div className="vuelo_salida">
         <div className="title_vuelo">
           <h1>Vuelo de salida</h1>
@@ -74,6 +71,41 @@ const ConfirmacionVuelos = () => {
           <div className="maleta3">
             <p>Equipaje 25Kg</p>
             <p>$320.000</p>
+          </div>
+        </div>
+      </div>
+      </div>
+      <div className="info_reservacion">
+        <p>Tu reservacion</p>
+        <div className="info_pasajeros">
+          <p>pasajeros</p>
+          <div>
+            <p>1 adulto</p>
+            <p>1 niños</p>
+            <p>1 bebes</p>
+          </div>
+        </div>
+          <p>Vuelo de salida</p>
+          <div className="info_salida">
+            <p>COL</p>
+            <p>------</p>
+            <p>BR</p>
+          </div>
+          <div className="info_hora">
+            <p>05:45 PM </p>
+            <p>06:47 PM</p>
+          </div>
+          <p>Martes, 30 noviembre, 2021</p>
+      </div>
+      <div>
+        <div>
+          <div>
+            <p>tarifa base</p>
+            <p>$450.000</p>
+          </div>
+          <div>
+            <p>Total</p>
+            <p>$450.000</p>
           </div>
         </div>
       </div>

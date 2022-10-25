@@ -12,15 +12,6 @@
     width: 70%;
 }
 
-.info_reservacion{
-    display: flex;
-    height: 30%;
-    background-color: lightgreen;
-    height: 30vh;
-    width: 20%;
-    line-height: 1.5rem;
-
-}
 .title_vuelo{
     display: flex;
     flex-direction: row;
@@ -75,23 +66,94 @@
     justify-content: center;
     cursor: pointer;
 }
-.info_reservacion{
+
+
+.info__reservacion{
     display: flex;
     flex-direction: column;
-    padding: 2rem;
+    align-items: center;
+    width: 20%;
+    height: 100%;
+    position: relative;
+    z-index: 1;
+    /* line-height: 1.5rem; */
+
 }
-.info_pasajeros{
-    display: flex;
-    flex-direction: row;
-    gap: 10rem;
+.info__reservacion--container1{
+    width: 100%;
+    position: relative;
+    z-index: 1;
 }
-.info_salida{
+.info__reservacion--container1 .info__div{
+    background-color: aliceblue;
+    position: relative;
+    z-index: 1;
+}
+.info__reservacion--container1 > p{
+    background-color: #bab8bc;
+    padding: 3px 0 0 10px;
+}
+.info__pasajeros{
+    width: 100%;
+    height: auto;
     display: flex;
-    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px 8px;
+    font-size: 12px;
+    position: relative;
+    z-index: 10;
+}
+.info__date{
+    /* background-color: aqua; */
+    width: 85%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    padding-top: 1rem;
+    padding-left: .5rem;
+}
+.info__div--date .p{
+    background-color: #3423444b;
+    padding-left: 12px;
+}
+.info__div--date{
+    width: 100%;
+    display: flex;
+    flex-direction: column; 
+    justify-content: center;
+}
+.info__div--date .info__div--text {
+    width: 100%;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;   
+    /* background-color: rgb(158, 158, 246); */
+    gap: 7px;
+}
+
+.info__salida{
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    /* ga */
+}
+.info__salida p{
+    font-size: 25px;
+    font-weight: bold;
+}
+.info__hora{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
     gap: 50px;
-}
-.info_hora{
-    display: flex;
-    flex-direction: row;
-    gap: 50px;
+
+} 
+.fecha__text{
+    font-size: 12px;
+    font-weight: bold;
 }

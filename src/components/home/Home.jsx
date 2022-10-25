@@ -6,18 +6,22 @@ import SeleccionCantidadPersonas from "./SeleccionCantidadPersonas"; //este es e
 import imagenAvion from "../../assets/imgs/avion.png";
 import SeleccionarFecha from "./SeleccionarFecha";
 import { useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { setMostrarSelccionPais } from "../../store/slices/infoPaisApi.slice";
 // import Pagos from "./Pagos";
 
 const Home = () => {
-
+  const dispatch = useDispatch()
+  const mostrarSeleccionPais = useSelector((state) => state.infoPaisApi)
   // esta es la url de la api mymapi
   const urlPais =
     "https://api.mymappi.com/v2/geocoding/reverse?apikey=c829b7f1-0151-42ab-83b8-a7d1c7528d81";
-  const apiInfoVuelos = "https://json-server-production-7eee.up.railway.app/registroVuelo"
+  const apiInfoVuelos = "https://server-vuelos-production.up.railway.app/api/vuelos"
+  // const apiInfoVuelos = "https://servidor-casero-production.up.railway.app/users"
   const { register, handleSubmit } = useForm(); // este es el formulario que contiene todos los datos del vuelo
   // pais origen y de destino
   const [paisOrigen, setPaisOrigen] = useState(""); //este contiene el pais en el que recide la persona que hace la recervacion
-  const [mostrarSeleccionPais, setMostrarSeleccionPais] = useState(''); //este contiene el nombre del país seleccionado
+  // const [mostrarSeleccionPais, setMostrarSeleccionPais] = useState(''); //este contiene el nombre del país seleccionado
   // total de personas a viajar
   const [adultos, setAdultos] = useState(0); //este es el total de adultos que viajaran
   const [niños, setNiños] = useState(0); //este es el total de niños que viajaran
@@ -28,27 +32,52 @@ const Home = () => {
   const [modalSeleccionPais, setModalSeleccionPais] = useState(false); // este es el boton del modal para selecionar pais
   const [modalSeleccionFecha, setModalSeleccionFechas] = useState(false); //este es el boton para selecionar fechas
   const [modalSeleccionCantidadPersonas, setModalSeleccionCantidadPersonas] = useState(false); //este es el boton para selcionar catidad de personas
+  const [numActual, setNumActual] = useState(true)
   // navegación
   const navigate = useNavigate()
-  // esta es la funcion que me llevará a la siguiente página
-  const submit = (form) => {
-    const registroVuelo = {
-      "id": 1,
-      "tipoVuelo": form,
-      "paísOrigen": paisOrigen,
-      "Destino": mostrarSeleccionPais,
-      "totalPersonas": {
-        "adultos": adultos,
-        "niños": niños,
-        "bebes": bebes
-      } 
-    }
-    axios.post(apiInfoVuelos, registroVuelo)
-    .then(res => console.log(res.data))
+
+  // 
+  const getPeticionApiVuelos = () => {
+    axios.get(apiInfoVuelos)
+    .then(res => {
+      console.log(res.users)
+      setObjetoApi(res.data.data[res.data.data.length-1])
+    })
+    .catch(err => console.log(err))
+  }
+  const postPeticionApiVuelos = (registroVuelos) => {
+    axios.post(apiInfoVuelos, registroVuelos)
+    .then((res) => {
+      getPeticionApiVuelos()
+      // setObjetoApi(res.data)
+      // console.log(res.data)
+    })
     .catch(error => console.log(error))
+  }
+  // esta es la funcion que me llevará a la siguiente página
+  const submit = async(form) => { 
+    const registroVuelos = {
+      "tipoVuelo": {
+        "redondo": false,
+        "sencillo": false
+      },
+      "paisOrigen": paisOrigen,
+      "paisDestino": mostrarSeleccionPais,
+      "fechaSalida": "22/10/2022",
+      "fechaLlegada": "22/10/2022",
+      "cupon": false,
+      "totalPersonas": {
+          "adultos": adultos,
+          "niños": niños,
+          "bebes": bebes
+      }
+    }
+    console.log(adultos)
+    postPeticionApiVuelos(registroVuelos)
     navigate("/confirmacion_vuelos")
     
   };
+
 // este useEffect contiene la localización de la persona que hace la recerva
 // es una función predeterminada que se encuentra MDN Docs
   useEffect(() => { 
@@ -60,12 +89,9 @@ const Home = () => {
 
       paisOrigenGeolocalizacion(latitud, longitud);
     };
-    axios.get(apiInfoVuelos)
-    .then(res => {
-      setObjetoApi(res.data)
-    })
+    dispatch(setMostrarSelccionPais())
+    getPeticionApiVuelos()
   }, []);
-  console.log(objetoApi)
 // esta funcion consume la APPI de mymappi para poder obtener el nombre del país de donde recide la persona
 const paisOrigenGeolocalizacion = (log, lat) => {
   axios.get(`${urlPais}&lat=${log}&lon=${lat}`)
@@ -76,8 +102,9 @@ const paisOrigenGeolocalizacion = (log, lat) => {
   };
 // esta funcion cuando se ejecuta me trae el nombre del país elegido
   const seleccionPais = (dato) => {
-    setMostrarSeleccionPais (dato)
+    dispatch(setMostrarSelccionPais(dato))
     setModalSeleccionPais (!modalSeleccionPais)
+    getPeticionApiVuelos()
   }
 // esta funcion cuando se ejecuta me trae el nombre la cantidad de personas que iran de viaje
   const totalPersonas = (adultos, niños, bebes) => {
@@ -85,6 +112,8 @@ const paisOrigenGeolocalizacion = (log, lat) => {
     setAdultos(adultos);
     setNiños(niños);
     setBebes(bebes);
+    getPeticionApiVuelos()
+    setNumActual(false)
   };
 
 
@@ -106,18 +135,17 @@ const paisOrigenGeolocalizacion = (log, lat) => {
               <label htmlFor="">
                 Vuelo redondo
                 <input
-                  type="radio"
+                  type="checkbox"
                   name="redondo"
-                  {...register("vuelo")}
-                  checked
+                  {...register("redondo")}
                 />
               </label>
               <label htmlFor="">
                 Vuelo sencillo
                 <input 
-                  type="radio" 
+                  type="checkbox" 
                   name="sencillo" 
-                  {...register("vuelo")} 
+                  {...register("sencillo")} 
                 />
               </label>
             </div>
@@ -131,16 +159,18 @@ const paisOrigenGeolocalizacion = (log, lat) => {
                 onClick={() => setModalSeleccionPais(!modalSeleccionPais)}
                 id="pais_dest"
               >
-                <p>{objetoApi.Destino !== "" ? objetoApi.Destino : "---"}</p>
+                <p>{mostrarSeleccionPais !== "" ? mostrarSeleccionPais : "---"}</p>
                 <p>Selecione un destino</p>
               </div>
 
 
               <div className="selection" onClick={() => setModalSeleccionFechas(!modalSeleccionFecha)}>
-                <p>Salid</p>
+                <p>Salida</p>
+                <p>{apiInfoVuelos.fechaSalida}</p>
               </div>
               <div className="selection" onClick={() => setModalSeleccionFechas(!modalSeleccionFecha)}>
                 <p>Regreso</p>
+                <p>{apiInfoVuelos.fechaLlegada}</p>
               </div>
 
 
@@ -149,25 +179,23 @@ const paisOrigenGeolocalizacion = (log, lat) => {
                 <div>
                   <p>
                     {
-                      objetoApi.totalPersonas?.adultos !== null ? 
-                      ` ${objetoApi.totalPersonas?.adultos} Adultos`:
-                      "--" 
-                      ||
+                      numActual ? 
+                      ` ${objetoApi?.totalPersonas?.adultos} Adultos` :
                       adultos !== null ? `${adultos} Adultos` : "--"
                     }
                   </p>
                   <p>
-                    {
-                      objetoApi.totalPersonas?.niños !== null ? 
-                      `${objetoApi.totalPersonas?.niños} Niños`:
-                      "--"
+                    { 
+                      numActual ? 
+                      `${objetoApi?.totalPersonas?.niños} Niños`:
+                      niños !== null ? `${niños} Niños` : "--" 
                     }
                   </p>
                   <p>
-                    {
-                      objetoApi.totalPersonas?.bebes !== null ? 
-                      `${objetoApi.totalPersonas?.bebes} Bebés`:
-                      "--"
+                    { 
+                      numActual ?
+                      `${objetoApi?.totalPersonas?.bebes} Bebés`:
+                      bebes !== null ? `${bebes} Bebes` : "--"
                     }
                   </p>
                 </div>

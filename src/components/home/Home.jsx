@@ -33,10 +33,18 @@ const Home = () => {
   const [modalSeleccionFecha, setModalSeleccionFechas] = useState(false); //este es el boton para selecionar fechas
   const [modalSeleccionCantidadPersonas, setModalSeleccionCantidadPersonas] = useState(false); //este es el boton para selcionar catidad de personas
   const [numActual, setNumActual] = useState(true)
+
+  // fechas
+  const [selecionAñoSalida, setSelecionAñoSalida] = useState(0)
+  const [selecionAñoRegreso, setSelecionAñoRegreso] = useState(0)
+  const [mesElegidoSalida, setMesElegidoSalida] = useState("")
+  const [mesElegidoRegreso, setMesElegidoRegreso] = useState("")
+  const [diaSalida, setDiaSalida] = useState(0)
+  const [diaRegreso, setDiaRegreso] = useState(0)
   // navegación
   const navigate = useNavigate()
 
-  // 
+  // consumo de apis
   const getPeticionApiVuelos = () => {
     axios.get(apiInfoVuelos)
     .then(res => {
@@ -116,6 +124,22 @@ const paisOrigenGeolocalizacion = (log, lat) => {
     setNumActual(false)
   };
 
+  const infoFechaRecerva = (
+    selecionAñoSalida,
+    selecionAñoRegreso,
+    mesElegidoSalida,
+    mesElegidoRegreso,
+    diaSalida,
+    diaRegreso
+  ) => {
+    setModalSeleccionFechas(!modalSeleccionFecha)
+    setSelecionAñoSalida(selecionAñoSalida)
+    setSelecionAñoRegreso(selecionAñoRegreso)
+    setMesElegidoSalida(mesElegidoSalida)
+    setMesElegidoRegreso(mesElegidoRegreso)
+    setDiaSalida(diaSalida)
+    setDiaRegreso(diaRegreso)
+  }
 
   return (
     <div className="Home">
@@ -166,11 +190,11 @@ const paisOrigenGeolocalizacion = (log, lat) => {
 
               <div className="selection" onClick={() => setModalSeleccionFechas(!modalSeleccionFecha)}>
                 <p>Salida</p>
-                <p>{apiInfoVuelos.fechaSalida}</p>
+                <p>{selecionAñoSalida ? `${diaSalida}/${mesElegidoSalida}/${selecionAñoSalida}` : "----"}</p>
               </div>
               <div className="selection" onClick={() => setModalSeleccionFechas(!modalSeleccionFecha)}>
                 <p>Regreso</p>
-                <p>{apiInfoVuelos.fechaLlegada}</p>
+                <p>{selecionAñoRegreso ? `${diaRegreso}/${mesElegidoRegreso}/${selecionAñoRegreso}` : "----"}</p>
               </div>
 
 
@@ -218,7 +242,9 @@ const paisOrigenGeolocalizacion = (log, lat) => {
         />}
         {
           modalSeleccionFecha && 
-          <SeleccionarFecha />
+          <SeleccionarFecha 
+            infoFechaRecerva={infoFechaRecerva}
+          />
         }
         {modalSeleccionCantidadPersonas && 
           <SeleccionCantidadPersonas 
@@ -235,3 +261,4 @@ const paisOrigenGeolocalizacion = (log, lat) => {
   );
 };
 export default Home;
+

@@ -5,6 +5,8 @@
   height: 100%;
   background-color: rgb(175, 118, 254);
   padding: .8rem;
+  position: relative;
+
 }
 .AsientosSalida{
   background-color: rgb(236, 235, 239);
@@ -85,4 +87,6 @@
   height: 70%;
   background-color: aqua;
   padding: .8rem;
+  position: relative;
+  z-index: 1;
 } 

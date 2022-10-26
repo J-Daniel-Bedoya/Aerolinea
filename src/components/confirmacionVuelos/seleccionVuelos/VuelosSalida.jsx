@@ -6,9 +6,6 @@ const VuelosSalida = () => {
       <div className="vuelo_salida">
         <div className="title_vuelo">
           <h1 className="title_salida">Vuelo de salida</h1>
-          <button onClick={() => navigate("/")} className="btn_cambiarVuelo">
-            Cambiar vuelo
-          </button>
         </div>
         <div className="title_datos">
           <p className="title_fechasVuelo">Martes 30 noviembre 2021</p>

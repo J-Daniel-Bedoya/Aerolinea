@@ -1,14 +1,14 @@
 import React from 'react'
+import { useNavigate } from 'react-router-dom';
 import AsientosSalida from './AsientosSalida';
  
 const SeleccionAsientosSalida = () => {
+  const navigate = useNavigate()
+
   return (
     <div className='SeleccionAsientosSalida'>
       <div className="title_vuelo">
           <h1 className="title_salida">Vuelo de salida</h1>
-          <button onClick={() => navigate("/")} className="btn_cambiarVuelo">
-            Cambiar vuelo
-          </button>
         </div>
         <div className="title_datos">
           <p className="title_fechasVuelo">Martes 30 noviembre 2021</p>

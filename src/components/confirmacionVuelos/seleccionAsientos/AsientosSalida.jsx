@@ -32,30 +32,10 @@ const AsientosSalida = () => {
   }, [setDiponible])
 
   // console.log(disponible)
-  const noDisp = () => {
-    botones.map(boton => {
-      disponible.map(dis => {
-        arrayNoDisponible.map(e => {
-          console.log(dis)
-          if (dis === e){
-            return (
-              <button className={`salidaRapida`} 
-                id="noDisponible" 
-              >{boton}
-              </button>
-            )
-          }else{
-            return (
-              <button className={`salidaRapida`} 
-                id="noDisponible" 
-                >{boton}
-              </button>
-            )
-          }
-        })
-      })
-    })
-  }
+  useEffect(() => {
+    // let 
+    
+  }, [botones, arrayNoDisponible])
 
   return (
     <div className='AsientosSalida'>
@@ -70,7 +50,13 @@ const AsientosSalida = () => {
       <p>Salida Rápida</p>
       <div className='asientosBotones'>
         <div className='botonesSalidaRapida'>
-          {noDisp}
+          {
+            botones.map(boton => (
+              <button className={`salidaRapida`} 
+                key={boton}>{boton}
+              </button>
+            ))
+          }
         </div>
         <div className='botnes__container'>
           {

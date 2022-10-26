@@ -1,27 +1,42 @@
 import React, { useEffect, useState } from 'react';
-import nameDias from '../../../public/nameDias.json';
 import meses from '../../../public/Meses.json';
 import años from '../../../public/Años.json';
 
-const SeleccionarFecha = ({infoFechaRecerva}) => {
+const SeleccionarFecha = ({infoFechaRecerva, objetoApi}) => {
   // estados para la ejecución interna del modal
-  const [diasSalida, setDiasSalida] = useState(31)
-  const [diasRegreso, setDiasRegreso] = useState(31)
-  const [arrDiasSalida, setArrDiasSalida] = useState([])
-  const [arrDiasRegreso, setArrDiasRegreso] = useState([])
+
+  const [diasSalida, setDiasSalida] = useState(31);
+  const [diasRegreso, setDiasRegreso] = useState(31);
+  const [arrDiasSalida, setArrDiasSalida] = useState([]);
+  const [arrDiasRegreso, setArrDiasRegreso] = useState([]);
 
   // estados que se envían al home
-  const [selecionAñoSalida, setSelecionAñoSalida] = useState(0)
-  const [selecionAñoRegreso, setSelecionAñoRegreso] = useState(0)
-  const [mesElegidoSalida, setMesElegidoSalida] = useState("")
-  const [mesElegidoRegreso, setMesElegidoRegreso] = useState("")
-  const [diaSalida, setDiaSalida] = useState(0)
-  const [diaRegreso, setDiaRegreso] = useState(0)
-
-
+  const [selecionAñoSalida, setSelecionAñoSalida] = useState(0);
+  const [selecionAñoRegreso, setSelecionAñoRegreso] = useState(0);
+  const [mesElegidoSalida, setMesElegidoSalida] = useState("");
+  const [mesElegidoRegreso, setMesElegidoRegreso] = useState("");
+  const [diaSalida, setDiaSalida] = useState(0);
+  const [diaRegreso, setDiaRegreso] = useState(0);
 
   useEffect(() => {
-    const mesElegidoSalida1 = mesElegidoSalida.toLowerCase()
+    const arrFechaSalida = objetoApi.fechaSalida.split("/");
+    const arrFechaRegreso = objetoApi.fechaLlegada.split("/");
+    const diaSalida = Number(arrFechaSalida[0]);
+    const diaRegreso = Number(arrFechaRegreso[0]);
+    const mesSalida = arrFechaSalida[1];
+    const mesRegreso = arrFechaRegreso[1];
+    const añoSalida = Number(arrFechaSalida[2]);
+    const añoRegreso = Number(arrFechaRegreso[2]);
+    setDiaSalida(diaSalida);
+    setDiaRegreso(diaRegreso);
+    setMesElegidoSalida(mesSalida);
+    setMesElegidoRegreso(mesRegreso);
+    setSelecionAñoSalida(añoSalida);
+    setSelecionAñoRegreso(añoRegreso);
+ }, []);
+
+  useEffect(() => {
+    const mesElegidoSalida1 = mesElegidoSalida?.toLowerCase()
     if(mesElegidoSalida1 === "febrero"){
       setDiasSalida(28);
     }else if(
@@ -38,7 +53,7 @@ const SeleccionarFecha = ({infoFechaRecerva}) => {
   }, [mesElegidoSalida])
 
   useEffect(() => {
-    const mesElegidoRegreso1 = mesElegidoRegreso.toLowerCase()
+    const mesElegidoRegreso1 = mesElegidoRegreso?.toLowerCase()
     if(mesElegidoRegreso1 === "febrero"){
       setDiasRegreso(28);
     }else if(
@@ -59,7 +74,6 @@ const SeleccionarFecha = ({infoFechaRecerva}) => {
     for(let i = 1; i <= diasSalida; i++){
       arrNubers.push(i)
     }
-    console.log(arrNubers)
     setArrDiasSalida(arrNubers)
   }, [setArrDiasSalida, diasSalida])
 
@@ -68,7 +82,6 @@ const SeleccionarFecha = ({infoFechaRecerva}) => {
     for(let i = 1; i <= diasRegreso; i++){
       arrNubers.push(i)
     }
-    console.log(arrNubers)
     setArrDiasRegreso(arrNubers)
   }, [setArrDiasRegreso, diasRegreso])
 

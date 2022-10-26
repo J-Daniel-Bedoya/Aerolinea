@@ -48,7 +48,7 @@ const Home = () => {
   const getPeticionApiVuelos = () => {
     axios.get(apiInfoVuelos)
     .then(res => {
-      console.log(res.users)
+      console.log(res.data.data[res.data.data.length-1])
       setObjetoApi(res.data.data[res.data.data.length-1])
     })
     .catch(err => console.log(err))
@@ -71,8 +71,8 @@ const Home = () => {
       },
       "paisOrigen": paisOrigen,
       "paisDestino": mostrarSeleccionPais,
-      "fechaSalida": "22/10/2022",
-      "fechaLlegada": "22/10/2022",
+      "fechaSalida": `${diaSalida}/${mesElegidoSalida}/${selecionAñoSalida}`,
+      "fechaLlegada": `${diaRegreso}/${mesElegidoRegreso}/${selecionAñoRegreso}`,
       "cupon": false,
       "totalPersonas": {
           "adultos": adultos,
@@ -140,6 +140,7 @@ const paisOrigenGeolocalizacion = (log, lat) => {
     setDiaSalida(diaSalida)
     setDiaRegreso(diaRegreso)
   }
+  
 
   return (
     <div className="Home">
@@ -190,11 +191,20 @@ const paisOrigenGeolocalizacion = (log, lat) => {
 
               <div className="selection" onClick={() => setModalSeleccionFechas(!modalSeleccionFecha)}>
                 <p>Salida</p>
-                <p>{selecionAñoSalida ? `${diaSalida}/${mesElegidoSalida}/${selecionAñoSalida}` : "----"}</p>
+                <p>{ 
+                    selecionAñoSalida ? 
+                    `${diaSalida}/${mesElegidoSalida}/${selecionAñoSalida}` :
+                    objetoApi.fechaSalida !== "22/10/2022" ?  
+                    `${objetoApi.fechaSalida}` : "----"}
+                </p>
               </div>
               <div className="selection" onClick={() => setModalSeleccionFechas(!modalSeleccionFecha)}>
                 <p>Regreso</p>
-                <p>{selecionAñoRegreso ? `${diaRegreso}/${mesElegidoRegreso}/${selecionAñoRegreso}` : "----"}</p>
+                <p>{
+                    numActual ? 
+                    `${objetoApi.fechaLlegada}` :
+                    selecionAñoRegreso ? 
+                    `${diaRegreso}/${mesElegidoRegreso}/${selecionAñoRegreso}` : "----"}</p>
               </div>
 
 
@@ -244,6 +254,7 @@ const paisOrigenGeolocalizacion = (log, lat) => {
           modalSeleccionFecha && 
           <SeleccionarFecha 
             infoFechaRecerva={infoFechaRecerva}
+            objetoApi={objetoApi}
           />
         }
         {modalSeleccionCantidadPersonas && 

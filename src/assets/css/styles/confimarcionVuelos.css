@@ -99,10 +99,12 @@
     position: relative;
     z-index: 1;
     /* line-height: 1.5rem; */
+    /* background-color: aqua;   */
 
 }
 .info__reservacion--container1{
     width: 100%;
+    /* height: 100%; */
     position: relative;
     z-index: 1;
 }
@@ -231,7 +233,7 @@
 .btn_seleccionarAsientos{
     width: 18vw;
     height: 7vh;
-    margin-top: 25px;
+    margin-top: 8rem;
     border: none;
     border-radius: 25px;
     color: white;

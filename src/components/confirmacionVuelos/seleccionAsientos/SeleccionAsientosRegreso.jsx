@@ -1,5 +1,6 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom';
+import AsientosSalida from './AsientosSalida';
  
 const SeleccionAsientosRegreso = () => {
   const navigate = useNavigate()
@@ -15,7 +16,9 @@ const SeleccionAsientosRegreso = () => {
           <p className="title_horariosVuelo">
             Seleccion de horarios y equipajes
           </p>
+          <AsientosSalida />
         </div>
+        
     </div>
  
   )

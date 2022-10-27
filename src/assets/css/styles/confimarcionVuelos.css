@@ -4,7 +4,7 @@
 .confirmacion_vuelos{
     padding: 4rem;
     width: 100%;
-    height: 130vh;
+    height: 100%;
     display: flex;
     justify-content: space-evenly;
     background-color: rgb(249, 239, 247);
@@ -32,16 +32,16 @@
     color: rgb(160, 100, 160);
     position: absolute;
     z-index: 20;
-    top: 2rem;
+    top: 1rem;
     right: 2rem;
 }
 #btn__abajo2{
     position: absolute;
-    top: 103%;
+    top:55rem;
 }
 #btn__abajo1{
     position: absolute;
-    top: 37%;
+    top: 50%;
 }
 .title_datos{
     margin-bottom: 20px;
@@ -71,11 +71,17 @@
     cursor: pointer;
     border-radius: 10px;
 }
-.maleta1 :hover{
-    width: 100%;
-    height: 100%;
+.maleta1:hover{
     color: white;
-    background-color: blueviolet;
+    background-color: rgb(167, 137, 194);
+}
+.maleta2:hover{
+    color: white;
+    background-color: rgb(167, 137, 194);
+}
+.maleta3:hover{
+    color: white;
+    background-color: rgb(167, 137, 194);
 }
 .maleta2{
     display: flex;
@@ -122,9 +128,10 @@
     z-index: 1;
 }
 .info__reservacion--container1 .info__div{
-    background-color: aliceblue;
+    background-color: white;
     position: relative;
     z-index: 1;
+    border-radius: 15px;
 }
 .info__reservacion--container1 > p{
     font-size: 22px;
@@ -156,9 +163,9 @@
     padding-left: .5rem;
 }
 .info__div--date .p{
-    background-color: #3423444b;
+    background-color:  rgba(167, 137, 194, 0.661);
     padding-left: 12px;
-    width: 18.5rem;
+    width: 14.3rem;
 }
 .info__div--date{
     width: 100%;
@@ -220,36 +227,37 @@
 }
 .card_costoVuelo{
     width: 18vw;
-    height: 25vh;
-    margin-top: 15px;
+    height: 30vh;
+    margin-top: 10px;
     padding-left: 15px;
-    background-color: aliceblue;
+    background-color: white;
     line-height: 3rem;
+    border-radius: 15px;
 }
 .tarifa_base{
     display: flex;
-    gap: 5.7rem;
+    gap: 5rem;
     padding-top: 1.5rem;
-    font-size: 20px;
+    font-size: 15px;
 }
 .costo_equipaje{
     display: flex;
-    gap: 3rem;
-    font-size: 20px;
+    gap: 2.7rem;
+    font-size: 15px;
 }
 .costo_total{
     display: flex;
-    gap: 9.4rem;
+    gap: 7.5rem;
     font-weight: bolder;
-    font-size: 20px;
+    font-size: 15px;
 }
 .btn_seleccionarAsientos{
     width: 18vw;
     height: 7vh;
-    margin-top: 8rem;
+    margin-top: 1rem;
     border: none;
     border-radius: 25px;
     color: white;
-    background-color: rgba(175, 20, 175, 0.918);
+    background-color: rgb(167, 137, 194);
     font-weight: bolder;
 }

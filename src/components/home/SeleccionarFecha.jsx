@@ -2,14 +2,21 @@ import React, { useEffect, useState } from 'react';
 import meses from '../../../public/Meses.json';
 import años from '../../../public/Años.json';
 
-const SeleccionarFecha = ({infoFechaRecerva, objetoApi}) => {
+const SeleccionarFecha = ({
+  infoFechaRecerva, 
+  objetoApi, 
+  selecionAñoRegreso2, 
+  selecionAñoSalida2
+}) => {
   // estados para la ejecución interna del modal
 
   const [diasSalida, setDiasSalida] = useState(31);
   const [diasRegreso, setDiasRegreso] = useState(31);
   const [arrDiasSalida, setArrDiasSalida] = useState([]);
   const [arrDiasRegreso, setArrDiasRegreso] = useState([]);
-
+  
+  
+  // const [añoR, setAñoR] = useState(0);
   // estados que se envían al home
   const [selecionAñoSalida, setSelecionAñoSalida] = useState(0);
   const [selecionAñoRegreso, setSelecionAñoRegreso] = useState(0);
@@ -18,6 +25,7 @@ const SeleccionarFecha = ({infoFechaRecerva, objetoApi}) => {
   const [diaSalida, setDiaSalida] = useState(0);
   const [diaRegreso, setDiaRegreso] = useState(0);
 
+  console.log(selecionAñoRegreso)
   useEffect(() => {
     const arrFechaSalida = objetoApi.fechaSalida.split("/");
     const arrFechaRegreso = objetoApi.fechaLlegada.split("/");
@@ -27,12 +35,24 @@ const SeleccionarFecha = ({infoFechaRecerva, objetoApi}) => {
     const mesRegreso = arrFechaRegreso[1];
     const añoSalida = Number(arrFechaSalida[2]);
     const añoRegreso = Number(arrFechaRegreso[2]);
-    setDiaSalida(diaSalida);
-    setDiaRegreso(diaRegreso);
-    setMesElegidoSalida(mesSalida);
-    setMesElegidoRegreso(mesRegreso);
-    setSelecionAñoSalida(añoSalida);
-    setSelecionAñoRegreso(añoRegreso);
+    // setAñoR(añoRegreso)
+    console.log(selecionAñoRegreso)
+    if (selecionAñoRegreso2 !== 0) {
+      setDiaSalida(diaSalida);
+      setDiaRegreso(diaRegreso);
+      setMesElegidoSalida(mesSalida);
+      setMesElegidoRegreso(mesRegreso);
+      setSelecionAñoSalida(añoSalida);
+      // setSelecionAñoRegreso(selecionAñoRegreso);
+    }else{
+      console.log(selecionAñoRegreso)
+      setDiaSalida(diaSalida);
+      setDiaRegreso(diaRegreso);
+      setMesElegidoSalida(mesSalida);
+      setMesElegidoRegreso(mesRegreso);
+      setSelecionAñoSalida(añoSalida);
+      // setSelecionAñoRegreso(añoRegreso);
+    }
  }, []);
 
   useEffect(() => {

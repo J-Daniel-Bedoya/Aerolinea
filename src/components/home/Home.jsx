@@ -201,10 +201,10 @@ const paisOrigenGeolocalizacion = (log, lat) => {
               <div className="selection" onClick={() => setModalSeleccionFechas(!modalSeleccionFecha)}>
                 <p>Regreso</p>
                 <p>{
-                    numActual ? 
-                    `${objetoApi.fechaLlegada}` :
                     selecionAñoRegreso ? 
-                    `${diaRegreso}/${mesElegidoRegreso}/${selecionAñoRegreso}` : "----"}</p>
+                    `${diaRegreso}/${mesElegidoRegreso}/${selecionAñoRegreso}` : 
+                    objetoApi.fechaLlegada !== "22/10/2022" ? 
+                    `${objetoApi.fechaLlegada}` : "----"}</p>
               </div>
 
 
@@ -255,6 +255,8 @@ const paisOrigenGeolocalizacion = (log, lat) => {
           <SeleccionarFecha 
             infoFechaRecerva={infoFechaRecerva}
             objetoApi={objetoApi}
+            selecionAñoSalida2={selecionAñoSalida}
+            selecionAñoRegreso2={selecionAñoRegreso}
           />
         }
         {modalSeleccionCantidadPersonas && 

@@ -14,7 +14,7 @@ const AsientosSalida = () => {
   const [noDisponible2, setNoDiponible2] = useState([]) 
   const [noDisponible3, setNoDiponible3] = useState([]) 
   const [noDisponible4, setNoDiponible4] = useState([]) 
-
+  const [num1, setNum1] = useState(0)
 
   useEffect(() => {
     let arrBasio = []
@@ -40,20 +40,20 @@ const AsientosSalida = () => {
     let arr3 = [];
     let arr4 = [];
     botones.map((e, i) => {
-      const ar = noDisponibleSalidaRapidaIzquierda.find(e => e === i+1)
-      arr1.push(ar || 0)
+      const ar1 = noDisponibleSalidaRapidaIzquierda.find(e => e === i+1)
+      arr1.push(ar1 || 0)
     })
     botones.map((e, i) => {
-      const ar = noDisponibleSalidaRapidaDerecha.find(e => e === i+1)
-      arr2.push(ar || 0)
+      const ar2 = noDisponibleSalidaRapidaDerecha.find(e => e === i+1)
+      arr2.push(ar2 || 0)
     })
     botones.map((e, i) => {
-      const ar = noDisponibleEstandarIzquierda.find(e => e === i+1)
-      arr3.push(ar || 0)
+      const ar3 = noDisponibleEstandarIzquierda.find(e => e === i+1)
+      arr3.push(ar3 || 0)
     })
     botones.map((e, i) => {
-      const ar = noDisponibleEstandarDerecha.find(e => e === i+1)
-      arr4.push(ar || 0)
+      const ar4 = noDisponibleEstandarDerecha.find(e => e === i+1)
+      arr4.push(ar4 || 0)
     })
     setNoDiponible1(arr1)
     setNoDiponible2(arr2)
@@ -61,10 +61,44 @@ const AsientosSalida = () => {
     setNoDiponible4(arr4)
   }, [botones])
 
-  
-  const selectedNum = (index) => {
-    noDisponibleSalidaRapidaIzquierda.push(index+1)
-    console.log(noDisponibleSalidaRapidaIzquierda)
+  const [numSelect, setNumSelect] = useState(0)
+
+  const selectedNum1 = (index) => {
+    const salidaRapidaIzquierda = [...noDisponibleSalidaRapidaIzquierda, index]
+    let arr1 = [];
+    botones.map((e, i) => {
+      const ar1 = salidaRapidaIzquierda.find(e => e === i+1)
+      arr1.push(ar1|| 0)
+    })
+    setNoDiponible1(arr1)
+  }
+  const selectedNum2 = (index) => {
+    const salidaRapidaDerecha = [...noDisponibleSalidaRapidaDerecha, index]
+    let arr2 = [];
+    botones.map((e, i) => {
+      const ar2 = salidaRapidaDerecha.find(e => e === i+1)
+      arr2.push(ar2 || 0)
+    })
+    setNoDiponible2(arr2)
+  }
+  const selectedNum3 = (index) => {
+    const estandarIzquierda = [...noDisponibleEstandarIzquierda, index]
+    let arr3 = [];
+    botones.map((e, i) => {
+      const ar3 = estandarIzquierda.find(e => e === i+1)
+      arr3.push(ar3 || 0)
+    })
+    setNoDiponible3(arr3)
+  }
+  const selectedNum4 = (index) => {
+    const estandarDerecha = [...noDisponibleEstandarDerecha, index]
+    let arr4 = [];
+
+    botones.map((e, i) => {
+      const ar4 = estandarDerecha.find(e => e === i+1)
+      arr4.push(ar4 || 0)
+    })
+    setNoDiponible4(arr4)
   }
   return (
     <div className='AsientosSalida'>
@@ -82,7 +116,7 @@ const AsientosSalida = () => {
           {
             botones.map((boton, index) => (
               <button 
-                onClick={() => selectedNum(index)}
+                onClick={() => selectedNum1(index+1)}
                 style={{
                   cursor: noDisponible1[index] === 0 && "pointer", 
                   // hover: noDisponible1[index] === 0 && "pointer", 
@@ -105,6 +139,7 @@ const AsientosSalida = () => {
         {
           botones.map((boton, index) => (
             <button 
+              onClick={() => selectedNum2(index+1)}
               style={{cursor: noDisponible2[index] === 0 && "pointer"}}
               className='salidaRapida'  
               id={noDisponible2[index] !== 0 ? "noDisponible" : ""}
@@ -120,6 +155,7 @@ const AsientosSalida = () => {
           {
             botones.map((boton, index) => (
               <button 
+                onClick={() => selectedNum3(index+1)}
                 style={{cursor: noDisponible3[index] === 0 && "pointer"}}
                 className='salidaRapida' 
                 id={noDisponible3[index] !== 0 ? "noDisponible" : ""}
@@ -139,6 +175,7 @@ const AsientosSalida = () => {
         {
           botones.map((boton, index) => (
             <button 
+              onClick={() => selectedNum4(index+1)}
               style={{cursor: noDisponible4[index] === 0 && "pointer"}}
               className='salidaRapida' 
               id={noDisponible4[index] !== 0 ? "noDisponible" : ""}

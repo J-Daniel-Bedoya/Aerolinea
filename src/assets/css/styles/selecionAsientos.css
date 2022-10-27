@@ -88,3 +88,6 @@
   position: relative;
   z-index: 1;
 } 
+.noDisponible{
+  background-color: #2f1cde;
+}

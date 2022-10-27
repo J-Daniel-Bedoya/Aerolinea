@@ -2,14 +2,21 @@ import React, { useEffect, useState } from 'react';
 import meses from '../../../public/Meses.json';
 import años from '../../../public/Años.json';
 
-const SeleccionarFecha = ({infoFechaRecerva, objetoApi}) => {
+const SeleccionarFecha = ({
+  infoFechaRecerva, 
+  objetoApi, 
+  selecionAñoRegreso2, 
+  selecionAñoSalida2
+}) => {
   // estados para la ejecución interna del modal
 
   const [diasSalida, setDiasSalida] = useState(31);
   const [diasRegreso, setDiasRegreso] = useState(31);
   const [arrDiasSalida, setArrDiasSalida] = useState([]);
   const [arrDiasRegreso, setArrDiasRegreso] = useState([]);
-
+  
+  
+  // const [añoR, setAñoR] = useState(0);
   // estados que se envían al home
   const [selecionAñoSalida, setSelecionAñoSalida] = useState(0);
   const [selecionAñoRegreso, setSelecionAñoRegreso] = useState(0);
@@ -18,6 +25,7 @@ const SeleccionarFecha = ({infoFechaRecerva, objetoApi}) => {
   const [diaSalida, setDiaSalida] = useState(0);
   const [diaRegreso, setDiaRegreso] = useState(0);
 
+  console.log(selecionAñoRegreso)
   useEffect(() => {
     const arrFechaSalida = objetoApi.fechaSalida.split("/");
     const arrFechaRegreso = objetoApi.fechaLlegada.split("/");

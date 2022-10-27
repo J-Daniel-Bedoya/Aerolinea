@@ -35,24 +35,12 @@ const SeleccionarFecha = ({
     const mesRegreso = arrFechaRegreso[1];
     const añoSalida = Number(arrFechaSalida[2]);
     const añoRegreso = Number(arrFechaRegreso[2]);
-    // setAñoR(añoRegreso)
-    console.log(selecionAñoRegreso)
-    if (selecionAñoRegreso2 !== 0) {
-      setDiaSalida(diaSalida);
-      setDiaRegreso(diaRegreso);
-      setMesElegidoSalida(mesSalida);
-      setMesElegidoRegreso(mesRegreso);
-      setSelecionAñoSalida(añoSalida);
-      // setSelecionAñoRegreso(selecionAñoRegreso);
-    }else{
-      console.log(selecionAñoRegreso)
-      setDiaSalida(diaSalida);
-      setDiaRegreso(diaRegreso);
-      setMesElegidoSalida(mesSalida);
-      setMesElegidoRegreso(mesRegreso);
-      setSelecionAñoSalida(añoSalida);
-      // setSelecionAñoRegreso(añoRegreso);
-    }
+    setDiaSalida(diaSalida);
+    setDiaRegreso(diaRegreso);
+    setMesElegidoSalida(mesSalida);
+    setMesElegidoRegreso(mesRegreso);
+    setSelecionAñoSalida(añoSalida);
+    setSelecionAñoRegreso(añoRegreso);
  }, []);
 
   useEffect(() => {

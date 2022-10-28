@@ -136,3 +136,55 @@
   border-radius: 15px;
   
 }
+@media (max-width: 700px){
+  .metodos_pago{
+    display: flex;
+    width: 65%;
+    gap: 0;
+    height: 250px;
+    flex-direction: column;
+  }
+  .info_tarjetasCredito{
+    width: 80%;
+    margin-left: 60px;
+  }
+#tarjetasCredito{
+    width: 250px;
+  }
+  .info_sucursal{
+    width: 80%;
+    margin-left: 60px;
+  }
+  #PagosSucursal
+{
+  width: 250px;
+}
+.info_servicios{
+  display: flex;
+  flex-direction: column;
+}
+.title_servicios{
+  margin-left: 60px;
+}
+.info_transporte{
+  width: 50%;
+  margin-left: 80px;
+}
+.info_vuelos{
+  width: 50%;
+  margin-left: 80px;
+}
+.info_grupos{
+  width: 50%;
+  margin-left: 80px;
+}
+.info_hoteles{
+  width: 50%;
+  margin-left: 80px;
+}
+.info_carga{
+  width: 50%;
+  margin-left: 80px;
+}
+
+}

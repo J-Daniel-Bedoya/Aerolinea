@@ -8,6 +8,10 @@ const InfoRecervacion = ({handleAsientos, objetoApiVulos}) => {
   const siglas = valores?.slice(0,3);
   const valores1 = objetoApiVulos.paisDestino; 
   const siglas1 = valores1?.slice(0,3);
+  const totalPersonas = objetoApiVulos.totalPersonas;
+  const [totalTarifaBase, serTotalTarifaBase] = useState("")
+  const [numTarifa, setNumTarifa] = useState("")
+  // console.log(Number(numTarifa))
 
   const valorMaletas = useSelector(state => state.valorMaletas);
   const sumaValoresMaletas = valorMaletas.reduce((a,b) => a+b);
@@ -15,7 +19,7 @@ const InfoRecervacion = ({handleAsientos, objetoApiVulos}) => {
   const stringNum = sumaValoresMaletas.toString().length;
   const [costoMaletas, setConstoMaletas] = useState("");
   const [total, setTotal] = useState("");
-  const totalValor = sumaValoresMaletas + 450;
+  const totalValor = sumaValoresMaletas + Number(numTarifa);
   const stringTotal = totalValor.toString();
   const stringTotalNum = totalValor.toString().length;
   useEffect(() => {
@@ -37,6 +41,34 @@ const InfoRecervacion = ({handleAsientos, objetoApiVulos}) => {
     }
   }, [stringNum, stringTotal]);
 
+
+  useEffect(() => {
+    const arrTarifa = [];
+    const tlAdultos = totalPersonas?.adultos;
+    const tlNiños = totalPersonas?.niños;
+    const tlBebes = totalPersonas?.bebes;
+    const tarifaAdultos = tlAdultos !== 0 ? tlAdultos * 450 : tlAdultos;
+    const tarifaNiños = tlNiños !== 0 ? tlNiños * 350 : tlNiños;
+    const tarifaBebes = tlBebes !== 0 ? tlBebes * 250 : tlBebes;
+
+    arrTarifa.push(tarifaAdultos, tarifaNiños, tarifaBebes)
+
+    const arrayTarifaTotal = arrTarifa.reduce((a,b) => a+b);
+    const stringTarifaBase = arrayTarifaTotal.toString();
+    const stringTarifaBaseNum = arrayTarifaTotal.toString().length;
+
+    if(stringTarifaBaseNum > 3){
+      const stringTarifaBaseRecorteHead = stringTarifaBase.slice(0,1);
+      const stringTarifaBaseRecorteBody = stringTarifaBase.slice(1,stringTarifaBase.length);
+      const stringTarifaBaseTerm = `${stringTarifaBaseRecorteHead}.${stringTarifaBaseRecorteBody}`;
+      setNumTarifa(stringTarifaBase)
+      serTotalTarifaBase(stringTarifaBaseTerm);
+    }else{
+      setNumTarifa(stringTarifaBase)
+      serTotalTarifaBase(stringTarifaBase);
+    }
+  }, [totalPersonas])
+
   return (
     <>
       <div className="info__reservacion">
@@ -46,7 +78,7 @@ const InfoRecervacion = ({handleAsientos, objetoApiVulos}) => {
             <div className="info__pasajeros" id="info__pasajeros">
               <p>pasajeros</p>
               <div>
-                <p>{objetoApiVulos.totalPersonas?.adultos} adulto</p>
+                <p>{objetoApiVulos.totalPersonas?.adultos} adultos</p>
                 <p>{objetoApiVulos.totalPersonas?.niños} niños</p>
                 <p>{objetoApiVulos.totalPersonas?.bebes} bebes</p>
               </div>
@@ -90,8 +122,8 @@ const InfoRecervacion = ({handleAsientos, objetoApiVulos}) => {
           <h4 className="title_costoVuelo">Costo Vuelo</h4>
           <div className="card_costoVuelo">
             <div className="tarifa_base">
-              <p>tarifa base</p>
-              <p>$450.000</p>
+              <p>Tarifa base</p>
+              <p>${totalTarifaBase}.000</p>
             </div>
             <div className="costo_equipaje">
               <p>Costo equipaje</p>

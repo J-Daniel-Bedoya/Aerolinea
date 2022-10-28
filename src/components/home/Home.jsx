@@ -8,6 +8,7 @@ import SeleccionarFecha from "./SeleccionarFecha";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { setMostrarSelccionPais } from "../../store/slices/infoPaisApi.slice";
+import nameDias from '../../../public/nameDias.json';
 // import Pagos from "./Pagos";
 
 const Home = () => {
@@ -63,7 +64,22 @@ const Home = () => {
     })
     .catch(error => console.log(error))
   }
+
+  const date = new Date()
+  const fechaDia = date.getDate();
+  const fechaNameDia = date.getDay()
+  const fechaMes = date.getMonth()
+  const fechaAño = date.getFullYear()
   // esta es la funcion que me llevará a la siguiente página
+  const [fechaNameDiaA, setFechaNameDiaA] = useState("")
+  useEffect(() => {
+    nameDias.forEach((dia, index) => {
+      if (index === fechaNameDia){
+        // console.log(dia)
+        setFechaNameDiaA(dia)
+      }
+    });
+  },[])
   const submit = async() => { 
     const idL = datos.length-1;
     const id = idL.id+1
@@ -72,8 +88,13 @@ const Home = () => {
       "tipoVuelo": false,
       "paisOrigen": paisOrigen,
       "paisDestino": mostrarSeleccionPais,
-      "fechaSalida": `${diaSalida}/${mesElegidoSalida}/${selecionAñoSalida}`,
-      "fechaLlegada": `${diaRegreso}/${mesElegidoRegreso}/${selecionAñoRegreso}`,
+      "fechaSalida": 
+      `${diaSalida}/${mesElegidoSalida}/${selecionAñoSalida}` !== "0//0" ? 
+      `${diaSalida}/${mesElegidoSalida}/${selecionAñoSalida}` : `${fechaNameDiaA}, ${fechaDia}/${fechaMes+1}/${fechaAño
+      }`,
+      "fechaLlegada": `${diaRegreso}/${mesElegidoRegreso}/${selecionAñoRegreso}` !== "0//0" ? 
+      `${diaRegreso}/${mesElegidoRegreso}/${selecionAñoRegreso}` : `${fechaNameDiaA}, ${fechaDia}/${fechaMes+1}/${fechaAño
+      }`,
       "cupon": false,
       "totalPersonas": {
         "adultos": adultos,
@@ -195,8 +216,8 @@ const paisOrigenGeolocalizacion = (log, lat) => {
                 <p>{ 
                     selecionAñoSalida ? 
                     `${diaSalida}/${mesElegidoSalida}/${selecionAñoSalida}` :
-                    objetoApi.fechaSalida !== "22/10/2022" ?  
-                    `${objetoApi.fechaSalida}` : "----"}
+                    objetoApi?.fechaSalida !== "22/10/2022" ?  
+                    `${objetoApi?.fechaSalida}` : "----"}
                 </p>
               </div>
               <div className="selection" onClick={() => setModalSeleccionFechas(!modalSeleccionFecha)}>
@@ -204,8 +225,8 @@ const paisOrigenGeolocalizacion = (log, lat) => {
                 <p>{
                     selecionAñoRegreso ? 
                     `${diaRegreso}/${mesElegidoRegreso}/${selecionAñoRegreso}` : 
-                    objetoApi.fechaLlegada !== "22/10/2022" ? 
-                    `${objetoApi.fechaLlegada}` : "----"}</p>
+                    objetoApi?.fechaLlegada !== "22/10/2022" ? 
+                    `${objetoApi?.fechaLlegada}` : "----"}</p>
               </div>
 
 

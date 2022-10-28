@@ -5,6 +5,7 @@ import { setValorMaletas } from '../../../store/slices/valorMaletas.slice';
 const VuelosSalida = ({objetoApiVulos}) => {
 
   const dispatch = useDispatch();
+  // console.log(objetoApiVulos.id)
 
   return (
     <>
@@ -14,7 +15,7 @@ const VuelosSalida = ({objetoApiVulos}) => {
         </div>
         <div className="title_datos">
           <p className="title_fechasVuelo">{objetoApiVulos.fechaSalida}</p>
-          <p className="title_paisVuelo">De {objetoApiVulos.paisOrigen} a {objetoApiVulos.paisDestino}</p>
+          <p className="title_paisVuelo">De {objetoApiVulos?.paisOrigen} a {objetoApiVulos?.paisDestino}</p>
           <p className="title_horariosVuelo">
             Seleccion de horarios y equipajes
           </p>

@@ -27,14 +27,14 @@ const SeleccionarFecha = ({
 
   // console.log(selecionAñoRegreso)
   useEffect(() => {
-    const arrFechaSalida = objetoApi.fechaSalida.split("/");
-    const arrFechaRegreso = objetoApi.fechaLlegada.split("/");
-    const diaSalida = Number(arrFechaSalida[0]);
-    const diaRegreso = Number(arrFechaRegreso[0]);
-    const mesSalida = arrFechaSalida[1];
-    const mesRegreso = arrFechaRegreso[1];
-    const añoSalida = Number(arrFechaSalida[2]);
-    const añoRegreso = Number(arrFechaRegreso[2]);
+    const arrFechaSalida = objetoApi?.fechaSalida.split("/");
+    const arrFechaRegreso = objetoApi?.fechaLlegada.split("/");
+    const diaSalida = Number(arrFechaSalida?.[0]);
+    const diaRegreso = Number(arrFechaRegreso?.[0]);
+    const mesSalida = arrFechaSalida?.[1];
+    const mesRegreso = arrFechaRegreso?.[1];
+    const añoSalida = Number(arrFechaSalida?.[2]);
+    const añoRegreso = Number(arrFechaRegreso?.[2]);
     setDiaSalida(diaSalida);
     setDiaRegreso(diaRegreso);
     setMesElegidoSalida(mesSalida);

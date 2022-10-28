@@ -3,9 +3,9 @@ import React, { useState } from 'react'
 
 const SeleccionCantidadPersonas = ({totalPersonas, adultos, niños, bebes, objetoApi}) => {
 
-  const [contadorAdultos, setContadorAdultos] = useState(objetoApi.totalPersonas.adultos || adultos);
-  const [contadorNiños, setContadorNiños] = useState(objetoApi.totalPersonas.niños || niños);
-  const [contadorBebes, setContadorBebes] = useState(objetoApi.totalPersonas.bebes || bebes);
+  const [contadorAdultos, setContadorAdultos] = useState(objetoApi?.totalPersonas.adultos || adultos);
+  const [contadorNiños, setContadorNiños] = useState(objetoApi?.totalPersonas.niños || niños);
+  const [contadorBebes, setContadorBebes] = useState(objetoApi?.totalPersonas.bebes || bebes);
 
   return (
     <div className='cantidadPersonas'>

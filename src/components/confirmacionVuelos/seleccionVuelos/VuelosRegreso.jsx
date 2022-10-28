@@ -11,8 +11,8 @@ const VuelosRegreso = ({objetoApiVulos}) => {
           <h1>Vuelo de regreso</h1>
         </div>
         <div className="title_datos">
-          <p className="title_fechasVuelo">{objetoApiVulos.fechaLlegada}</p>
-          <p className="title_paisVuelo">De {objetoApiVulos.paisDestino} a {objetoApiVulos.paisOrigen}</p>
+          <p className="title_fechasVuelo">{objetoApiVulos?.fechaLlegada}</p>
+          <p className="title_paisVuelo">De {objetoApiVulos?.paisDestino} a {objetoApiVulos?.paisOrigen}</p>
           <p className="title_horariosVuelo">
             Seleccion de horarios y equipajes
           </p>

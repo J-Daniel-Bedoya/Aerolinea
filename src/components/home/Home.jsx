@@ -16,8 +16,8 @@ const Home = () => {
   // esta es la url de la api mymapi
   const urlPais =
     "https://api.mymappi.com/v2/geocoding/reverse?apikey=c829b7f1-0151-42ab-83b8-a7d1c7528d81";
-  const apiInfoVuelos = "https://server-vuelos-production.up.railway.app/api/vuelos"
-  // const apiInfoVuelos = "https://servidor-casero-production.up.railway.app/users"
+  // const apiInfoVuelos = "https://server-vuelos-production.up.railway.app/api/vuelos"
+  const apiInfoVuelos = "https://aerolineajsonserver-production.up.railway.app/vuelos"
   const { register, handleSubmit } = useForm(); // este es el formulario que contiene todos los datos del vuelo
   // pais origen y de destino
   const [paisOrigen, setPaisOrigen] = useState(""); //este contiene el pais en el que recide la persona que hace la recervacion
@@ -43,44 +43,44 @@ const Home = () => {
   const [diaRegreso, setDiaRegreso] = useState(0)
   // navegación
   const navigate = useNavigate()
-
+  const [datos, setDatos] = useState([]);
   // consumo de apis
   const getPeticionApiVuelos = () => {
     axios.get(apiInfoVuelos)
     .then(res => {
-      console.log(res.data.data[res.data.data.length-1])
-      setObjetoApi(res.data.data[res.data.data.length-1])
+      // console.log(res.data[res.data.length-1])
+      setObjetoApi(res.data[res.data.length-1])
+      setDatos(res.data)
     })
     .catch(err => console.log(err))
   }
   const postPeticionApiVuelos = (registroVuelos) => {
-    axios.post(apiInfoVuelos, registroVuelos)
+    axios.post(`https://aerolineajsonserver-production.up.railway.app/vuelos`, registroVuelos)
     .then((res) => {
       getPeticionApiVuelos()
-      // setObjetoApi(res.data)
+      setObjetoApi(res.data)
       // console.log(res.data)
     })
     .catch(error => console.log(error))
   }
   // esta es la funcion que me llevará a la siguiente página
-  const submit = async(form) => { 
+  const submit = async() => { 
+    const idL = datos.length-1;
+    const id = idL.id+1
     const registroVuelos = {
-      "tipoVuelo": {
-        "redondo": false,
-        "sencillo": false
-      },
+      "id": id,
+      "tipoVuelo": false,
       "paisOrigen": paisOrigen,
       "paisDestino": mostrarSeleccionPais,
       "fechaSalida": `${diaSalida}/${mesElegidoSalida}/${selecionAñoSalida}`,
       "fechaLlegada": `${diaRegreso}/${mesElegidoRegreso}/${selecionAñoRegreso}`,
       "cupon": false,
       "totalPersonas": {
-          "adultos": adultos,
-          "niños": niños,
-          "bebes": bebes
+        "adultos": adultos,
+        "niños": niños,
+        "bebes": bebes
       }
     }
-    console.log(adultos)
     postPeticionApiVuelos(registroVuelos)
     navigate("/confirmacion_vuelos")
     
@@ -105,6 +105,7 @@ const paisOrigenGeolocalizacion = (log, lat) => {
   axios.get(`${urlPais}&lat=${log}&lon=${lat}`)
       .then((res) => {
         setPaisOrigen(res.data.data.address.country);
+        // console.log(res.data.data.address.country)
       })
       .catch((error) => console.log(error));
   };

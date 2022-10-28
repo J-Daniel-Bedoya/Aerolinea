@@ -14,7 +14,7 @@ const AsientosSalida = () => {
   const [noDisponible2, setNoDiponible2] = useState([]) 
   const [noDisponible3, setNoDiponible3] = useState([]) 
   const [noDisponible4, setNoDiponible4] = useState([]) 
-  const [num1, setNum1] = useState(0)
+  // const [num1, setNum1] = useState(0)
 
   useEffect(() => {
     let arrBasio = []

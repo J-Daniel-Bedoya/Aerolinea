@@ -25,7 +25,7 @@ const SeleccionarFecha = ({
   const [diaSalida, setDiaSalida] = useState(0);
   const [diaRegreso, setDiaRegreso] = useState(0);
 
-  console.log(selecionAñoRegreso)
+  // console.log(selecionAñoRegreso)
   useEffect(() => {
     const arrFechaSalida = objetoApi.fechaSalida.split("/");
     const arrFechaRegreso = objetoApi.fechaLlegada.split("/");

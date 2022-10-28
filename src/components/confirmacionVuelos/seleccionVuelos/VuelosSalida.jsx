@@ -1,6 +1,11 @@
 import React from 'react'
- 
-const VuelosSalida = () => {
+import { useDispatch } from 'react-redux';
+import { setValorMaletas } from '../../../store/slices/valorMaletas.slice';
+
+const VuelosSalida = ({objetoApiVulos}) => {
+
+  const dispatch = useDispatch();
+
   return (
     <>
       <div className="vuelo_salida">
@@ -8,8 +13,8 @@ const VuelosSalida = () => {
           <h1 className="title_salida">Vuelo de salida</h1>
         </div>
         <div className="title_datos">
-          <p className="title_fechasVuelo">Martes 30 noviembre 2021</p>
-          <p className="title_paisVuelo">Colombia a Brasil</p>
+          <p className="title_fechasVuelo">{objetoApiVulos.fechaSalida}</p>
+          <p className="title_paisVuelo">De {objetoApiVulos.paisOrigen} a {objetoApiVulos.paisDestino}</p>
           <p className="title_horariosVuelo">
             Seleccion de horarios y equipajes
           </p>
@@ -22,15 +27,15 @@ const VuelosSalida = () => {
             <p>Sin escalas</p>
           </div>
           <p className="number_vuelo">06:47 PM</p>
-          <div className="maleta1">
+          <div onClick={() => dispatch(setValorMaletas(120.000))} className="maleta1">
             <p>1 objeto personal</p>
             <p>$120.000</p>
           </div>
-          <div className="maleta2">
+          <div onClick={() => dispatch(setValorMaletas(240.000))} className="maleta2">
             <p>Equipaje de mano</p>
             <p>$240.000</p>
           </div>
-          <div className="maleta3">
+          <div onClick={() => dispatch(setValorMaletas(320.000))} className="maleta3">
             <p>Equipaje 25Kg</p>
             <p>$320.000</p>
           </div>

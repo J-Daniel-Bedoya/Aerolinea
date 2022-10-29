@@ -49,13 +49,13 @@ const Home = () => {
   const getPeticionApiVuelos = () => {
     axios.get(apiInfoVuelos)
     .then(res => {
-      // console.log(res.data[res.data.length-1])
-      setObjetoApi(res.data[res.data.length-1])
+      // console.log(res.data)
+      setObjetoApi(res.data)
       setDatos(res.data)
     })
     .catch(err => console.log(err))
   }
-  const postPeticionApiVuelos = (registroVuelos) => {
+  const putPeticionApiVuelos = (registroVuelos) => {
     axios.post(`https://aerolineajsonserver-production.up.railway.app/vuelos`, registroVuelos)
     .then((res) => {
       getPeticionApiVuelos()
@@ -81,10 +81,8 @@ const Home = () => {
     });
   },[])
   const submit = async() => { 
-    const idL = datos.length-1;
-    const id = idL.id+1
     const registroVuelos = {
-      "id": id,
+      "id": 1,
       "tipoVuelo": false,
       "paisOrigen": paisOrigen,
       "paisDestino": mostrarSeleccionPais,
@@ -102,7 +100,7 @@ const Home = () => {
         "bebes": bebes
       }
     }
-    postPeticionApiVuelos(registroVuelos)
+    putPeticionApiVuelos(registroVuelos)
     navigate("/confirmacion_vuelos")
     
   };

@@ -59,18 +59,17 @@
   border: 1px solid rgb(47, 28, 222);
 }
 
-.botnes__container{
-  /* background-color: aqua; */
+.botones___container{
   width: 20%;
   height: 91%;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  /* justify-content: space-between; */
   align-items: center;
-  gap: 2px;
+  gap: 4px;
 }
-.botnes__container--number{
-  width: 3rem;
+.botones___container--number{
+  width: 2.9rem;
   height: 2.7rem;
   border-radius: 5px;
   border: 2px solid #2f1cde;

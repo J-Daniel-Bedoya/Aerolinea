@@ -1,9 +1,9 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom';
-import AsientosSalida from './AsientosSalida';
+import AsientosRegreso from './AsientosRegreso';
  
 const SeleccionAsientosRegreso = () => {
-  const navigate = useNavigate()
+
 
   return (
     <div className='SeleccionAsientosRegreso'>
@@ -16,7 +16,7 @@ const SeleccionAsientosRegreso = () => {
           <p className="title_horariosVuelo">
             Seleccion de horarios y equipajes
           </p>
-          <AsientosSalida />
+          <AsientosRegreso />
         </div>
         
     </div>

@@ -6,7 +6,6 @@ const VuelosSalida = ({objetoApiVulos}) => {
 
   const dispatch = useDispatch();
   // console.log(objetoApiVulos.id)
-
   return (
     <>
       <div className="vuelo_salida">
@@ -14,7 +13,7 @@ const VuelosSalida = ({objetoApiVulos}) => {
           <h1 className="title_salida">Vuelo de salida</h1>
         </div>
         <div className="title_datos">
-          <p className="title_fechasVuelo">{objetoApiVulos.fechaSalida}</p>
+          <p className="title_fechasVuelo">{objetoApiVulos?.fechaSalida}</p>
           <p className="title_paisVuelo">De {objetoApiVulos?.paisOrigen} a {objetoApiVulos?.paisDestino}</p>
           <p className="title_horariosVuelo">
             Seleccion de horarios y equipajes

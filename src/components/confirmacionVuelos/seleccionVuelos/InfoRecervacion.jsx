@@ -1,19 +1,19 @@
 import React, { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux';
  
+const InfoRecervacion = ({handleAsientos, objetoApiVulos, addArrayNumeros}) => {
 
-const InfoRecervacion = ({handleAsientos, objetoApiVulos}) => {
-
-  const valores = objetoApiVulos.paisOrigen; 
+  const valores = objetoApiVulos?.paisOrigen; 
   const siglas = valores?.slice(0,3);
-  const valores1 = objetoApiVulos.paisDestino; 
+  const valores1 = objetoApiVulos?.paisDestino; 
   const siglas1 = valores1?.slice(0,3);
-  const totalPersonas = objetoApiVulos.totalPersonas;
+  const totalPersonas = objetoApiVulos?.totalPersonas;
   const [totalTarifaBase, serTotalTarifaBase] = useState("")
   const [numTarifa, setNumTarifa] = useState("")
   // console.log(Number(numTarifa))
 
   const valorMaletas = useSelector(state => state.valorMaletas);
+
   const sumaValoresMaletas = valorMaletas.reduce((a,b) => a+b);
   const string = sumaValoresMaletas.toString();
   const stringNum = sumaValoresMaletas.toString().length;
@@ -22,6 +22,7 @@ const InfoRecervacion = ({handleAsientos, objetoApiVulos}) => {
   const totalValor = sumaValoresMaletas + Number(numTarifa);
   const stringTotal = totalValor.toString();
   const stringTotalNum = totalValor.toString().length;
+
   useEffect(() => {
     if (stringNum > 3) {
       const addPuntoEnUno = string.slice(0,1);
@@ -78,9 +79,9 @@ const InfoRecervacion = ({handleAsientos, objetoApiVulos}) => {
             <div className="info__pasajeros" id="info__pasajeros">
               <p>pasajeros</p>
               <div>
-                <p>{objetoApiVulos.totalPersonas?.adultos} adultos</p>
-                <p>{objetoApiVulos.totalPersonas?.niños} niños</p>
-                <p>{objetoApiVulos.totalPersonas?.bebes} bebes</p>
+                <p>{objetoApiVulos?.totalPersonas?.adultos} adultos</p>
+                <p>{objetoApiVulos?.totalPersonas?.niños} niños</p>
+                <p>{objetoApiVulos?.totalPersonas?.bebes} bebes</p>
               </div>
             </div>
             <div className="info__date">
@@ -97,7 +98,7 @@ const InfoRecervacion = ({handleAsientos, objetoApiVulos}) => {
                     <p>05:45 PM </p>
                     <p>06:47 PM</p>
                   </div>
-                  <p className="fecha__text">{objetoApiVulos.fechaSalida}</p>
+                  <p className="fecha__text">{objetoApiVulos?.fechaSalida}</p>
                 </div>
               </div>
               <div className="info__div--date">
@@ -112,7 +113,7 @@ const InfoRecervacion = ({handleAsientos, objetoApiVulos}) => {
                     <p>05:45 PM </p>
                     <p>06:47 PM</p>
                   </div>
-                  <p className="fecha__text">{objetoApiVulos.fechaLlegada}</p>
+                  <p className="fecha__text">{objetoApiVulos?.fechaLlegada}</p>
                 </div>
               </div>
             </div>
@@ -136,7 +137,11 @@ const InfoRecervacion = ({handleAsientos, objetoApiVulos}) => {
           </div>
         </div>
         <div>
-          <button onClick={() => handleAsientos()} className="btn_seleccionarAsientos" >Seleccionar asientos</button>
+          {
+            valorMaletas !== 0 &&
+            <button onClick={() => handleAsientos()} className="btn_seleccionarAsientos" >Seleccionar asientos</button>
+          }
+          <button onClick={() => addArrayNumeros()} className="btn_seleccionarAsientos" >Guardar selecciones</button>
         </div>
       </div>
     </>

@@ -8,13 +8,29 @@ export const asientosIzquierdaRegreso1Slice = createSlice({
   initialState: [],
   reducers: {
     setAsientosIzquierdaRegreso1: (state, actions) => {
-      const leng = actions.payload?.length
-      if (leng === undefined) {
-        state.push(actions.payload) 
-      }else{
-        state = actions.payload
-      }
-      return state
+       const validator = state.includes(actions.payload);
+       const leng = actions.payload?.length;
+       
+       if (leng === undefined) {
+         if (!validator){
+           state.push(actions.payload);
+         }
+         else{
+           // const validatorArrayApi = valorInicial.includes(actions.payload);
+           // console.log(validatorArrayApi);
+           // if(!validatorArrayApi){
+             const index = state.findIndex(e => e === actions.payload);
+             state.splice(index, 1);
+           // }else{
+ 
+           // }
+         }
+       }else{
+         state = actions.payload;
+        //  valorInicial.push([...actions.payload]);
+       }
+      //  console.log(valorInicial);
+       return state;
     }
   }
 })

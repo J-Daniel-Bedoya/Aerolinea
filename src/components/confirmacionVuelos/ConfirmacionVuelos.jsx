@@ -1,4 +1,5 @@
 import axios from "axios";
+import Swal from 'sweetalert2';
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
@@ -24,9 +25,14 @@ const ConfirmacionVuelos = () => {
   const arrayNumeros = "https://json-serverarraynumeros-production.up.railway.app/seleccionarAsientos";
 
   const navigate = useNavigate();
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
 
+  const [objetoApiVulos, setObjetosApiVuelos] = useState({});
+  const [arrayNumeroAsientos, setArrayNumeroAsientos] = useState({});
   const [asientos, setAsientos] = useState(false);
+
+  const totalPasajeros = objetoApiVulos.totalPersonas?.adultos +
+  objetoApiVulos.totalPersonas?.niños + objetoApiVulos.totalPersonas?.bebes;
 
   const noDisponibleSalidaRapidaIzquierda1 = useSelector(state => state.asientosIzquierda1);
   const noDisponibleSalidaRapidaDerecha1 = useSelector(state => state.asientosDerecha2);
@@ -40,13 +46,40 @@ const ConfirmacionVuelos = () => {
 
   const handleAsientos = () => {
     setAsientos(!asientos);
+    if(!asientos){
+      Swal.fire({
+        title: "Estas en seleccion Aientos",
+        icon: "info",
+        text: `Puedes agregar solo ${totalPasajeros} asientos`,
+        timer: 5000,
+        customClass: {
+          confirmButton: 'btn btn-success',
+        },
+        confirmButtonText: "Ok",
+      })
+    }else{
+        Swal.fire({
+        title: "Estas en seleccion de fechas y equipaje",
+        icon: "info",
+        text: `Solo selecciona lo necesario`,
+        timer: 5000,
+        customClass: {
+          confirmButton: 'btn btn-success',
+        },
+        confirmButtonText: "Ok",
+      })
+    }
   }
-  const [objetoApiVulos, setObjetosApiVuelos] = useState({});
+  
   
   useEffect(() => {
     axios.get(apiInfoVuelos)
     .then(res => {
       setObjetosApiVuelos(res.data);
+    })
+    axios.get(arrayNumeros)
+    .then(res => {
+      setArrayNumeroAsientos(res.data)
     })
   }, []);
   useEffect(() => {
@@ -62,20 +95,43 @@ const ConfirmacionVuelos = () => {
   }, [])
 
   const addArrayNumeros = () => {
-    const objectNumber = {
-      "id": 1,
-      "asientosSalidaIzquierda1": noDisponibleSalidaRapidaIzquierda1,
-      "asientosSalidaDerecha2": noDisponibleSalidaRapidaDerecha1,
-      "asientosSalidaIzquierda3": noDisponibleEstandarIzquierda1,
-      "asientosSalidaDerecha4": noDisponibleEstandarDerecha1,
-
-      "asientosRegresoIzquierda1": noDisponibleSalidaRapidaIzquierda2,
-      "asientosRegresoDerecha2": noDisponibleSalidaRapidaDerecha2,
-      "asientosRegresoIzquierda3": noDisponibleEstandarIzquierda2,
-      "asientosRegresoDerecha4": noDisponibleEstandarDerecha2
+    setAsientos(false);
+    const v1 = 0
+    noDisponibleSalidaRapidaIzquierda1.forEach(e => {
+      arrayNumeroAsientos.asientosSalidaIzquierda1.forEach(i => {
+        if (e === i) {
+          v1 += 1 
+        }
+      })
+    })
+    console.log(v1)
+    if(arrayNumeroAsientos.asientosSalidaIzquierda1.length === v1){
+      const objectNumber = {
+        "id": 1,
+        "asientosSalidaIzquierda1": noDisponibleSalidaRapidaIzquierda1,
+        "asientosSalidaDerecha2": noDisponibleSalidaRapidaDerecha1,
+        "asientosSalidaIzquierda3": noDisponibleEstandarIzquierda1,
+        "asientosSalidaDerecha4": noDisponibleEstandarDerecha1,
+  
+        "asientosRegresoIzquierda1": noDisponibleSalidaRapidaIzquierda2,
+        "asientosRegresoDerecha2": noDisponibleSalidaRapidaDerecha2,
+        "asientosRegresoIzquierda3": noDisponibleEstandarIzquierda2,
+        "asientosRegresoDerecha4": noDisponibleEstandarDerecha2
+      }
+      axios.post(arrayNumeros, objectNumber)
+      .then(res => {
+        console.log(res.data)
+        Swal.fire({
+          icon: "success",
+          title: "Seleccion exitosa",
+          timer: 4000,
+          customClass: {
+            confirmButton: 'btn btn-success',
+          },
+          confirmButtonText: "Listo",
+        })
+      })
     }
-    axios.post(arrayNumeros, objectNumber)
-    .then(res => console.log(res.data))
   }
   return (
     <div className="confirmacion_vuelos">

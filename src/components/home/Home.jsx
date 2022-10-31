@@ -1,4 +1,5 @@
 import axios from "axios"; // con esto puedo consumir una api
+import Swal from 'sweetalert2';
 import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form"; //esta es la librería para formularios
 import SelecionarPaisDestino from "./SeleccionarPaisDestino"; // este es el componente para seleccionar un país
@@ -60,6 +61,16 @@ const Home = () => {
     .then((res) => {
       getPeticionApiVuelos()
       setObjetoApi(res.data)
+      Swal.fire({
+        icon: "success",
+        title: "Recervación exitosa",
+        timer: 4000,
+        text: "Tu recervación ha sido agregada correctamente",
+        customClass: {
+          confirmButton: 'btn btn-success',
+        },
+        confirmButtonText: "Listo",
+      })
       // console.log(res.data)
     })
     .catch(error => console.log(error))

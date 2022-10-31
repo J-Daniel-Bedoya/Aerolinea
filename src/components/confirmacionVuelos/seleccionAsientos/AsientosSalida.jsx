@@ -4,14 +4,14 @@ import { setAsientosIzquierda1 } from '../../../store/slices/asientosSalida/asie
 import { setAsientosDerecha2 } from '../../../store/slices/asientosSalida/asientosDerecha2.slice';
 import { setAsientosIzquierda3 } from '../../../store/slices/asientosSalida/asientosIzquierda3.slice';
 import { setAsientosDerecha4 } from '../../../store/slices/asientosSalida/asientosDerecha4.slice';
-import axios from 'axios';
 
 
 const AsientosSalida = () => {
 
   const dispatch = useDispatch();
+  
   const letras = ["A", "B", "C", "", "D", "E", "F"];
-
+// const k = [2,5]
   const noDisponibleSalidaRapidaIzquierda = useSelector(state => state.asientosIzquierda1);
   const noDisponibleSalidaRapidaDerecha = useSelector(state => state.asientosDerecha2);
   const noDisponibleEstandarIzquierda = useSelector(state => state.asientosIzquierda3);
@@ -173,70 +173,3 @@ export default AsientosSalida;
 
 
 
-
-  // useEffect(() => {
-  //   let arr1 = [];
-  //   let arr2 = [];
-  //   let arr3 = [];
-  //   let arr4 = [];
-  //   botones.map((e, i) => {
-  //     const ar1 = noDisponibleSalidaRapidaIzquierda.find(e => e === i+1)
-  //     arr1.push(ar1 || 0)
-  //   })
-  //   botones.map((e, i) => {
-  //     const ar2 = noDisponibleSalidaRapidaDerecha.find(e => e === i+1)
-  //     arr2.push(ar2 || 0)
-  //   })
-  //   botones.map((e, i) => {
-  //     const ar3 = noDisponibleEstandarIzquierda.find(e => e === i+1)
-  //     arr3.push(ar3 || 0)
-  //   })
-  //   botones.map((e, i) => {
-  //     const ar4 = noDisponibleEstandarDerecha.find(e => e === i+1)
-  //     arr4.push(ar4 || 0)
-  //   })
-  //   setNoDiponible1(arr1)
-  //   setNoDiponible2(arr2)
-  //   setNoDiponible3(arr3)
-  //   setNoDiponible4(arr4)
-  // }, [botones])
-
-  // const [numSelect, setNumSelect] = useState(0)
-
-  // const selectedNum1 = (index) => {
-  //   const salidaRapidaIzquierda = [...noDisponibleSalidaRapidaIzquierda, index]
-  //   let arr1 = [];
-  //   botones.map((e, i) => {
-  //     const ar1 = salidaRapidaIzquierda.find(e => e === i+1)
-  //     arr1.push(ar1|| 0)
-  //   })
-  //   setNoDiponible1(arr1)
-  // }
-  // const selectedNum2 = (index) => {
-  //   const salidaRapidaDerecha = [...noDisponibleSalidaRapidaDerecha, index]
-  //   let arr2 = [];
-  //   botones.map((e, i) => {
-  //     const ar2 = salidaRapidaDerecha.find(e => e === i+1)
-  //     arr2.push(ar2 || 0)
-  //   })
-  //   setNoDiponible2(arr2)
-  // }
-  // const selectedNum3 = (index) => {
-  //   const estandarIzquierda = [...noDisponibleEstandarIzquierda, index]
-  //   let arr3 = [];
-  //   botones.map((e, i) => {
-  //     const ar3 = estandarIzquierda.find(e => e === i+1)
-  //     arr3.push(ar3 || 0)
-  //   })
-  //   setNoDiponible3(arr3)
-  // }
-  // const selectedNum4 = (index) => {
-  //   const estandarDerecha = [...noDisponibleEstandarDerecha, index]
-  //   let arr4 = [];
-
-  //   botones.map((e, i) => {
-  //     const ar4 = estandarDerecha.find(e => e === i+1)
-  //     arr4.push(ar4 || 0)
-  //   })
-  //   setNoDiponible4(arr4)
-  // }

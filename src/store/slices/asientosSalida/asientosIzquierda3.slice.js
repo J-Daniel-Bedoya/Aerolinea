@@ -8,14 +8,28 @@ export const asientosIzquierda3Slice = createSlice({
   initialState: [],
   reducers: {
     setAsientosIzquierda3: (state, actions) => {
-      const leng = actions.payload?.length
+      // const valorInicial = [];
+      const validator = state.includes(actions.payload);
+      const leng = actions.payload?.length;
+      
       if (leng === undefined) {
-        state.push(actions.payload)
+        if (!validator){
+          state.push(actions.payload);
+        }else{
+          const index = state.findIndex(e => e === actions.payload);
+          state.splice(index, 1);
+          // const validatorArrayApi = valorInicial.includes(actions.payload);
+          // console.log(validatorArrayApi);
+          // if(!validatorArrayApi){
+          // }
+        }
       }else{
-        state = actions.payload
+        state = actions.payload;
+        // valorInicial.push([...actions.payload]);
       }
-      return state
-    }
+      // console.log(valorInicial);
+      return state;
+    } 
   }
 })
 

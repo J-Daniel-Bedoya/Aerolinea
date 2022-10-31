@@ -3,26 +3,36 @@ import axios from 'axios';
 const arrayNumeros = "https://json-serverarraynumeros-production.up.railway.app/seleccionarAsientos";
 
 import { createSlice } from '@reduxjs/toolkit';
-import { useState } from 'react';
 
 export const asientosIzquierda1Slice = createSlice({
   name: 'asientosIzquierda1',
   initialState: [],
   reducers: {
     setAsientosIzquierda1: (state, actions) => {
-      const leng = actions.payload?.length
+      const validator = state.includes(actions.payload);
+      const leng = actions.payload?.length;
+      
       if (leng === undefined) {
-        state.push(actions.payload)
-
+        if (!validator){
+          state.push(actions.payload);
+        }else{
+          const index = state.findIndex(e => e === actions.payload);
+          state.splice(index, 1);
+          // const validatorArrayApi = valorInicial.includes(actions.payload);
+          // console.log(validatorArrayApi);
+          // if(!validatorArrayApi){
+          // }
+        }
       }else{
-        state = actions.payload
+        state = actions.payload;
       }
-      return state
+      // console.log(valorInicial);
+      return state;
     } 
   }
 })
 
-// const [getState, setGetState] = useState()
+
 export const getArrayNumerosSalidaIzquierda1Thunck = () => dispach => {
   axios.get(arrayNumeros)
   .then(res => {

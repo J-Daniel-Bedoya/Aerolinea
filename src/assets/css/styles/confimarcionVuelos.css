@@ -238,18 +238,18 @@
     display: flex;
     gap: 5rem;
     padding-top: 1.5rem;
-    font-size: 15px;
+    font-size: 13px;
 }
 .costo_equipaje{
     display: flex;
     gap: 2.7rem;
-    font-size: 15px;
+    font-size: 13px;
 }
 .costo_total{
     display: flex;
     gap: 7.5rem;
     font-weight: bolder;
-    font-size: 15px;
+    font-size: 13px;
 }
 .btn_seleccionarAsientos{
     width: 18vw;

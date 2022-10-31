@@ -95,17 +95,18 @@ const ConfirmacionVuelos = () => {
   }, [])
 
   const addArrayNumeros = () => {
+
     setAsientos(false);
-    const v1 = 0
-    noDisponibleSalidaRapidaIzquierda1.forEach(e => {
-      arrayNumeroAsientos.asientosSalidaIzquierda1.forEach(i => {
-        if (e === i) {
-          v1 += 1 
-        }
-      })
-    })
-    console.log(v1)
-    if(arrayNumeroAsientos.asientosSalidaIzquierda1.length === v1){
+    // const v1 = 0
+    // noDisponibleSalidaRapidaIzquierda1.forEach(e => {
+    //   arrayNumeroAsientos.asientosSalidaIzquierda1.forEach(i => {
+    //     if (e === i) {
+    //       v1 += 1 
+    //     }
+    //   })
+    // })
+    // console.log(v1)
+    // if(arrayNumeroAsientos.asientosSalidaIzquierda1.length === v1){
       const objectNumber = {
         "id": 1,
         "asientosSalidaIzquierda1": noDisponibleSalidaRapidaIzquierda1,
@@ -131,7 +132,8 @@ const ConfirmacionVuelos = () => {
           confirmButtonText: "Listo",
         })
       })
-    }
+      navigate("/confirmacion_vuelos/finalizar_compra")
+    // }
   }
   return (
     <div className="confirmacion_vuelos">

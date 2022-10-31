@@ -16,7 +16,7 @@ export const asientosDerecha2Slice = createSlice({
         if (!validator){
           state.push(actions.payload);
         }
-        // else{
+        else{
           // const validatorArrayApi = valorInicial.includes(actions.payload);
           // console.log(validatorArrayApi);
           // if(!validatorArrayApi){
@@ -25,7 +25,7 @@ export const asientosDerecha2Slice = createSlice({
           // }else{
 
           // }
-        // }
+        }
       }else{
         state = actions.payload;
         // valorInicial.push([...actions.payload]);

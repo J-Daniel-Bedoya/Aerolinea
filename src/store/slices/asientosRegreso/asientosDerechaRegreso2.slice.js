@@ -8,30 +8,30 @@ export const asientosDerechaRegreso2Slice = createSlice({
   initialState: [],
   reducers: {
     setAsientosDerechaRegreso2: (state, actions) => {
-       // const valorInicial = [];
-       const validator = state.includes(actions.payload);
-       const leng = actions.payload?.length;
-       
-       if (leng === undefined) {
-         if (!validator){
-           state.push(actions.payload);
-         }
-         else{
-           // const validatorArrayApi = valorInicial.includes(actions.payload);
-           // console.log(validatorArrayApi);
-           // if(!validatorArrayApi){
-             const index = state.findIndex(e => e === actions.payload);
-             state.splice(index, 1);
-           // }else{
- 
-           // }
-         }
-       }else{
-         state = actions.payload;
-        //  valorInicial.push([...actions.payload]);
-       }
-      //  console.log(valorInicial);
-       return state;
+      // const valorInicial = [];
+      const validator = state.includes(actions.payload);
+      const leng = actions.payload?.length;
+      
+      if (leng === undefined) {
+        if (!validator){
+          state.push(actions.payload);
+        }
+        else{
+          // const validatorArrayApi = valorInicial.includes(actions.payload);
+          // console.log(validatorArrayApi);
+          // if(!validatorArrayApi){
+            const index = state.findIndex(e => e === actions.payload);
+            state.splice(index, 1);
+          // }else{
+
+          // }
+        }
+      }else{
+        state = actions.payload;
+      //  valorInicial.push([...actions.payload]);
+      }
+    //  console.log(valorInicial);
+      return state;
     }
   }
 })

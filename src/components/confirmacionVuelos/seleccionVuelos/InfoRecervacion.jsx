@@ -9,12 +9,14 @@ const InfoRecervacion = ({handleAsientos, objetoApiVulos, addArrayNumeros}) => {
   const siglas1 = valores1?.slice(0,3);
 
   const valorMaletas = useSelector(state => state.valorMaletas);
+  const valorMaletas2 = useSelector(state => state.valorMaletas2);
 
   const tlAdultos = objetoApiVulos?.adultos * 450;
   const tlNiños = objetoApiVulos?.niños * 350;
   const tlBebes = objetoApiVulos?.bebes * 250;
   const totalTarifaBase = tlAdultos + tlNiños + tlBebes;
-  const sumaValoresMaletas = valorMaletas.reduce((a,b) => a+b);
+  console.log(valorMaletas)
+  const sumaValoresMaletas = valorMaletas + valorMaletas2;
   const costoMaletas = sumaValoresMaletas
 
   const total = Number(costoMaletas) + Number(totalTarifaBase)

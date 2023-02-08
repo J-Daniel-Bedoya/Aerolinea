@@ -1,9 +1,17 @@
-import React from "react";
-import { useDispatch } from 'react-redux';
-import { setValorMaletas } from '../../../store/slices/valorMaletas.slice';
+import React, { useState } from "react";
+import { useDispatch } from "react-redux";
+import { setValorMaletas2 } from "../../../store/slices/valorMaletas2.slice";
 
-const VuelosRegreso = ({objetoApiVulos}) => {
+const VuelosRegreso = ({ objetoApiVulos }) => {
   const dispatch = useDispatch();
+
+  const [color, setColor] = useState(0);
+
+  const maletas = (v1, v2) => {
+    dispatch(setValorMaletas2(v1));
+    setColor(v2);
+  };
+
   return (
     <>
       <div className="vuelo_regreso">
@@ -12,7 +20,9 @@ const VuelosRegreso = ({objetoApiVulos}) => {
         </div>
         <div className="title_datos">
           <p className="title_fechasVuelo">{objetoApiVulos?.fechaLlegada}</p>
-          <p className="title_paisVuelo">De {objetoApiVulos?.paisDestino} a {objetoApiVulos?.paisOrigen}</p>
+          <p className="title_paisVuelo">
+            De {objetoApiVulos?.paisDestino} a {objetoApiVulos?.paisOrigen}
+          </p>
           <p className="title_horariosVuelo">
             Seleccion de horarios y equipajes
           </p>
@@ -25,23 +35,43 @@ const VuelosRegreso = ({objetoApiVulos}) => {
             <p>Sin escalas</p>
           </div>
           <p className="number_vuelo">10:08 AM</p>
-          <div onClick={() => dispatch(setValorMaletas(120.000))} className="maleta1">
+          <div
+            onClick={() => maletas(120.0, 1)}
+            style={{
+              backgroundColor: color === 1 && "#a789c2",
+              color: color === 1 && "#fff",
+            }}
+            className="maleta1"
+          >
             <p>1 objeto personal</p>
             <p>$120.000</p>
           </div>
-          <div onClick={() => dispatch(setValorMaletas(240.000))} className="maleta2">
+          <div
+            onClick={() => maletas(240.0, 2)}
+            style={{
+              backgroundColor: color === 2 && "#a789c2",
+              color: color === 2 && "#fff",
+            }}
+            className="maleta2"
+          >
             <p>Equipaje de mano</p>
             <p>$240.000</p>
           </div>
-          <div onClick={() => dispatch(setValorMaletas(320.000))} className="maleta3">
+          <div
+            onClick={() => maletas(320.0, 3)}
+            style={{
+              backgroundColor: color === 3 && "#a789c2",
+              color: color === 3 && "#fff",
+            }}
+            className="maleta3"
+          >
             <p>Equipaje 25Kg</p>
             <p>$320.000</p>
           </div>
         </div>
       </div>
     </>
- 
-  )
-}
- 
+  );
+};
+
 export default VuelosRegreso;

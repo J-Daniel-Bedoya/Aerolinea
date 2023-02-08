@@ -137,9 +137,6 @@ const ConfirmacionVuelos = ({objetoApiVulos}) => {
               </button>
               <SeleccionAsientosSalida objetoApiVulos={objetoApiVulos}/>
               <SeleccionAsientosRegreso objetoApiVulos={objetoApiVulos}/>
-              <button onClick={() => navigate("/")} className="btn_cambiarVuelo" id="btn__abajo2">
-                Cambiar vuelo
-              </button>
             </>
           ) : (
             <>
@@ -151,9 +148,6 @@ const ConfirmacionVuelos = ({objetoApiVulos}) => {
                 objetoApiVulos.tipoVuelo &&
                 <>
                   <VuelosRegreso objetoApiVulos={objetoApiVulos}/>
-                  <button onClick={() => navigate("/")} className="btn_cambiarVuelo" id="btn__abajo1">
-                    Cambiar vuelo
-                  </button>
                 </>
               }
             </>

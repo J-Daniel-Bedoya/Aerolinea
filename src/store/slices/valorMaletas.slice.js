@@ -2,11 +2,11 @@ import { createSlice } from '@reduxjs/toolkit';
   
 export const valorMaletasSlice = createSlice({
   name: 'valorMaletas',
-  initialState: [0],
+  initialState: 0,
   reducers: {
     setValorMaletas: (state, actions) => {
-      state.push(actions.payload)
-      return state
+      
+      return actions.payload
     }
   }
 })

@@ -31,22 +31,30 @@ const Pagos = () => {
         <div className="info_vuelos">
           <img src={imagenVuelos} id="imagenVuelos" />
           <p className="title_cardServicio">Vuelos + Hoteles</p>
-          <p className="txt_cardServicio">Encuentra las mejores ofertas para tus viaje</p>
+          <p className="txt_cardServicio">
+            Encuentra las mejores ofertas para tus viaje
+          </p>
         </div>
         <div className="info_grupos">
           <img src={imagenGrupos} id="imagenGrupos" />
           <p className="title_cardServicio">Grupos</p>
-          <p className="txt_cardServicio">Obten una cotizacion para grupo de mas de 9 personas </p>
+          <p className="txt_cardServicio">
+            Obten una cotizacion para grupo de mas de 9 personas{" "}
+          </p>
         </div>
         <div className="info_hoteles">
           <img src={imagenHoteles} id="imagenHoteles" />
           <p className="title_cardServicio">Hoteles</p>
-          <p className="txt_cardServicio">reserva en cualquier habitacion en cualquier parte del mundo</p>
+          <p className="txt_cardServicio">
+            reserva en cualquier habitacion en cualquier parte del mundo
+          </p>
         </div>
         <div className="info_carga">
           <img src={imagenCarga} id="imagenCarga" />
           <p className="title_cardServicio">Carga</p>
-          <p className="txt_cardServicio">Contamos con servicio de carga y mensajeria</p>
+          <p className="txt_cardServicio">
+            Contamos con servicio de carga y mensajeria
+          </p>
         </div>
       </div>
     </div>

@@ -1,0 +1,160 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Serif:opsz@8..144&display=swap");
+
+.Home {
+  width: 100%;
+  height: 100vh;
+  background-color: #fff;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3rem;
+  padding-top: 4rem;
+}
+
+h2 {
+  font-size: 1.6rem;
+}
+.home__title--description {
+  /* background-color: #b78adf; */
+  width: 90%;
+}
+
+.Home__card--content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 88rem;
+  height: 18rem;
+  padding: 2rem;
+  background-color: #7707da;
+  /* position: relative; */
+  /* z-index: 1; */
+  border-radius: 15px;
+}
+
+.title_card2 {
+  color: rgba(54, 52, 52, 0.698);
+}
+.Home__card--selection {
+  background-color: rgba(221, 218, 218, 0);
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  column-gap: 0.6rem;
+}
+
+.vuelo_style {
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  width: 20rem;
+  height: 2.1rem;
+  border-radius: 12px;
+}
+.vuelo_style h2 {
+  padding-right: 1rem;
+}
+.home__card--selection {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 10rem;
+  gap: 3rem;
+  /* background-color: rgb(247, 243, 243); */
+}
+
+.selection {
+  width: 10rem;
+  height: 4rem;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #00000059;
+  border-radius: 8px;
+  transition: .2s;
+}
+.home__card--destino {
+  display: flex;
+}
+.selection:hover{
+  cursor: pointer;
+  background-color: #1f046b;
+  color: #fff;
+}
+#pais_org, #fecha_sali{
+  border-radius: 8px 0 0 8px;
+}
+#pais_dest, #fecha_reg{
+  border-radius: 0 8px 8px 0;
+}
+.home__card--fechas {
+  display: flex;
+}
+
+.Home__btn--submit{
+    display: flex;
+    justify-content: center;
+}
+.btn_vuelo{
+    display: flex;
+    width: 4rem;
+    height: 4rem;
+    border-radius: 50%;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    background-color: #ffffff;
+    transition: .7s;
+}
+.fa-check {
+  font-size: 1.6rem;
+}
+.btn_vuelo:hover{
+  cursor: pointer;
+  background-color: #1f046b;
+  color: #fff;
+  transform: rotate(360deg);
+}
+.cantidad__personas>p{
+  font-size: 16px;
+  font-weight: bold;
+}
+.fa-user, .fa-child, .fa-baby-carriage {
+  font-size: 13px;
+  color: #6b56a6;
+}
+
+/* @media (max-width: 700px) {
+    
+    .imgAvion{
+        position: absolute;
+        top: 0;
+        left: 0;
+        border-radius: 0;
+        width: 741px;
+        height: 40%;
+        object-fit: cover;
+    }
+    .home{
+        display: flex;
+
+    }
+    .Home__card--content{
+        display: flex;
+        position: absolute;
+        top: 10px;
+        width: 65%;
+        height: 100vh;
+
+    }
+    
+
+ } */

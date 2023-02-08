@@ -20,19 +20,18 @@ import { getArrayNumerosRegresoDerecha2Thunck } from "../../store/slices/asiento
 import { getArrayNumerosRegresoIzquierda3Thunck } from "../../store/slices/asientosRegreso/asientosIzquierdaRegreso3.slice";
 import { getArrayNumerosRegresoDerecha4Thunck } from "../../store/slices/asientosRegreso/asientosDerechaRegreso4.slice";
 
-const ConfirmacionVuelos = () => {
-  const apiInfoVuelos = "https://aerolineajsonserver-production.up.railway.app/vuelos";
+const ConfirmacionVuelos = ({objetoApiVulos}) => {
+  // const apiInfoVuelos = "https://apiaerolinea-production.up.railway.app/api/v1";
   const arrayNumeros = "https://json-serverarraynumeros-production.up.railway.app/seleccionarAsientos";
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  const [objetoApiVulos, setObjetosApiVuelos] = useState({});
   const [arrayNumeroAsientos, setArrayNumeroAsientos] = useState({});
   const [asientos, setAsientos] = useState(false);
 
-  const totalPasajeros = objetoApiVulos.totalPersonas?.adultos +
-  objetoApiVulos.totalPersonas?.niños + objetoApiVulos.totalPersonas?.bebes;
+  const totalPasajeros = objetoApiVulos?.adultos +
+  objetoApiVulos?.niños + objetoApiVulos?.bebes;
 
   const noDisponibleSalidaRapidaIzquierda1 = useSelector(state => state.asientosIzquierda1);
   const noDisponibleSalidaRapidaDerecha1 = useSelector(state => state.asientosDerecha2);
@@ -73,15 +72,12 @@ const ConfirmacionVuelos = () => {
   
   
   useEffect(() => {
-    axios.get(apiInfoVuelos)
-    .then(res => {
-      setObjetosApiVuelos(res.data);
-    })
     axios.get(arrayNumeros)
     .then(res => {
       setArrayNumeroAsientos(res.data)
     })
   }, []);
+
   useEffect(() => {
     dispatch(getArrayNumerosSalidaIzquierda1Thunck());
     dispatch(getArrayNumerosSalidaDerecha2Thunck());
@@ -97,16 +93,7 @@ const ConfirmacionVuelos = () => {
   const addArrayNumeros = () => {
 
     setAsientos(false);
-    // const v1 = 0
-    // noDisponibleSalidaRapidaIzquierda1.forEach(e => {
-    //   arrayNumeroAsientos.asientosSalidaIzquierda1.forEach(i => {
-    //     if (e === i) {
-    //       v1 += 1 
-    //     }
-    //   })
-    // })
-    // console.log(v1)
-    // if(arrayNumeroAsientos.asientosSalidaIzquierda1.length === v1){
+
       const objectNumber = {
         "id": 1,
         "asientosSalidaIzquierda1": noDisponibleSalidaRapidaIzquierda1,
@@ -133,8 +120,9 @@ const ConfirmacionVuelos = () => {
         })
       })
       navigate("/confirmacion_vuelos/finalizar_compra")
-    // }
+    
   }
+  
   return (
     <div className="confirmacion_vuelos">
       <div className="configuracionVuelos_container"> 
@@ -159,10 +147,15 @@ const ConfirmacionVuelos = () => {
                 Cambiar vuelo
               </button>
               <VuelosSalida objetoApiVulos={objetoApiVulos}/>
-              <VuelosRegreso objetoApiVulos={objetoApiVulos}/>
-              <button onClick={() => navigate("/")} className="btn_cambiarVuelo" id="btn__abajo1">
-                Cambiar vuelo
-              </button>
+              {
+                objetoApiVulos.tipoVuelo &&
+                <>
+                  <VuelosRegreso objetoApiVulos={objetoApiVulos}/>
+                  <button onClick={() => navigate("/")} className="btn_cambiarVuelo" id="btn__abajo1">
+                    Cambiar vuelo
+                  </button>
+                </>
+              }
             </>
           )
         }

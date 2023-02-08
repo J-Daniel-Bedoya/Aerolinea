@@ -6,7 +6,11 @@ const SeleccionarFecha = ({
   infoFechaRecerva, 
   objetoApi, 
   selecionAñoRegreso2, 
-  selecionAñoSalida2
+  selecionAñoSalida2,
+  mesElegidoSalida2,
+  mesElegidoRegreso2,
+  diaSalida2,
+  diaRegreso2
 }) => {
   // estados para la ejecución interna del modal
 
@@ -27,20 +31,20 @@ const SeleccionarFecha = ({
 
   // console.log(selecionAñoRegreso)
   useEffect(() => {
-    const arrFechaSalida = objetoApi?.fechaSalida.split("/");
-    const arrFechaRegreso = objetoApi?.fechaLlegada.split("/");
+    const arrFechaSalida = objetoApi?.fechaSalida?.split("/");
+    const arrFechaRegreso = objetoApi?.fechaLlegada?.split("/");
     const diaSalida = Number(arrFechaSalida?.[0]);
     const diaRegreso = Number(arrFechaRegreso?.[0]);
     const mesSalida = arrFechaSalida?.[1];
     const mesRegreso = arrFechaRegreso?.[1];
     const añoSalida = Number(arrFechaSalida?.[2]);
     const añoRegreso = Number(arrFechaRegreso?.[2]);
-    setDiaSalida(diaSalida);
-    setDiaRegreso(diaRegreso);
-    setMesElegidoSalida(mesSalida);
-    setMesElegidoRegreso(mesRegreso);
-    setSelecionAñoSalida(añoSalida);
-    setSelecionAñoRegreso(añoRegreso);
+    setDiaSalida(diaSalida || diaSalida2);
+    setDiaRegreso(diaRegreso || diaRegreso2);
+    setMesElegidoSalida(mesSalida || mesElegidoSalida2);
+    setMesElegidoRegreso(mesRegreso || mesElegidoRegreso2);
+    setSelecionAñoSalida(añoSalida || selecionAñoSalida2);
+    setSelecionAñoRegreso(añoRegreso || selecionAñoRegreso2);
  }, []);
 
   useEffect(() => {
@@ -106,7 +110,7 @@ const SeleccionarFecha = ({
             <h3>Fecha de salida</h3>
             <div>
               <select name="año" id="año" value={selecionAñoSalida} onChange={e => setSelecionAñoSalida(e.target.value)}>
-                <option value="">Elegir año</option>
+                <option value="">{selecionAñoSalida === null ? selecionAñoSalida : "Elegir año"}</option>
                 {
                   años.map(año => (
                     <option key={año} value={`${año}`}>{año}</option>

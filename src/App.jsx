@@ -4,6 +4,7 @@ import PaginaVuelos from "./components/Paginavuelos";
 import ConfirmacionVuelos from "./components/confirmacionVuelos/ConfirmacionVuelos";
 import FinalizarCompra from "./components/finalizacionDeCompra/FinalizarCompra";
 import axios from "axios";
+import Personas from "./components/personas/Personas";
 
 
 function App() {
@@ -29,7 +30,8 @@ function App() {
         <Routes>
           <Route path="/" element={<PaginaVuelos objetoApi={objetoApi} setObjetoApi={setObjetoApi}/>}/>
           <Route path="/confirmacion_vuelos" element={<ConfirmacionVuelos objetoApiVulos={objetoApi}/>}/>
-          <Route path="/confirmacion_vuelos/finalizar_compra" element={<FinalizarCompra />}/>
+          <Route path="/personas" element={<Personas />}/>
+          <Route path="/finalizar_compra" element={<FinalizarCompra />}/>
         </Routes>
         
       </div>

@@ -1,5 +1,6 @@
 import React from 'react'
 import { useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
  
 const InfoRecervacion = ({handleAsientos, objetoApiVulos, addArrayNumeros}) => {
 
@@ -15,12 +16,16 @@ const InfoRecervacion = ({handleAsientos, objetoApiVulos, addArrayNumeros}) => {
   const tlNiños = objetoApiVulos?.niños * 350;
   const tlBebes = objetoApiVulos?.bebes * 250;
   const totalTarifaBase = tlAdultos + tlNiños + tlBebes;
-  console.log(valorMaletas)
+  
   const sumaValoresMaletas = valorMaletas + valorMaletas2;
   const costoMaletas = sumaValoresMaletas
 
-  const total = Number(costoMaletas) + Number(totalTarifaBase)
+  const total = Number(costoMaletas) + Number(totalTarifaBase);
+  const navigate = useNavigate();
 
+  const seguir = () => {
+    navigate('/personas')
+  }
 
   return (
     <>
@@ -94,9 +99,13 @@ const InfoRecervacion = ({handleAsientos, objetoApiVulos, addArrayNumeros}) => {
         <div>
           {
             valorMaletas !== 0 &&
+            <button onClick={() => seguir()} className="btn_seleccionarAsientos" >Seguir</button>
+          }
+          {/* {
+            valorMaletas !== 0 &&
             <button onClick={() => handleAsientos()} className="btn_seleccionarAsientos" >Seleccionar asientos</button>
           }
-          <button onClick={() => addArrayNumeros()} className="btn_seleccionarAsientos" >Guardar selecciones</button>
+          <button onClick={() => addArrayNumeros()} className="btn_seleccionarAsientos" >Guardar selecciones</button> */}
         </div>
       </div>
     </>

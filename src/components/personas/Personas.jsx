@@ -53,7 +53,7 @@ const Personas = () => {
     axios.post(`${apiInfoVuelos}/persona`, info)
     const totalPersonas = recerva?.adultos + recerva?.niños + recerva?.bebes
     console.log(info)
-    if (conteo <= totalPersonas){
+    if (conteo < totalPersonas){
       setConteo(conteo+1);
       reset(infoReset)
     }else {

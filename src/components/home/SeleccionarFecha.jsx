@@ -10,7 +10,8 @@ const SeleccionarFecha = ({
   mesElegidoSalida2,
   mesElegidoRegreso2,
   diaSalida2,
-  diaRegreso2
+  diaRegreso2,
+  typeVuelo,
 }) => {
   // estados para la ejecución interna del modal
 
@@ -135,35 +136,38 @@ const SeleccionarFecha = ({
               </select>
             </div>
           </div>
-          <div className='seleccionarFecha__salida-regreso'> 
-            <h3>Fecha de Regreso</h3>
-            <div>
-              <select name="año" id="año" value={selecionAñoRegreso} onChange={e => setSelecionAñoRegreso(e.target.value)}>
-                <option value="">Elegir año</option>
-                {
-                  años.map(año => (
-                    <option key={año} value={`${año}`}>{año}</option>
-                  ))
-                }
-              </select>
-              <select name="mes" id="mes" value={mesElegidoRegreso} onChange={e => setMesElegidoRegreso(e.target.value)}>
-                <option value="">Elegir mes</option>
-                {
-                  meses.map(mes => (
-                    <option key={mes} value={`${mes}`}>{mes}</option>
-                  ))
-                }
-              </select>
-              <select name="dia" id="dia" value={diaRegreso} onChange={e => setDiaRegreso(e.target.value)}>
-                <option value="">Elegir dia</option>
-                {
-                  arrDiasRegreso.map(dia => (
-                    <option key={dia} value={`${dia}`}>{dia}</option>
-                  ))
-                }
-              </select>
+          {
+            typeVuelo &&
+            <div className='seleccionarFecha__salida-regreso'> 
+              <h3>Fecha de Regreso</h3>
+              <div>
+                <select name="año" id="año" value={selecionAñoRegreso} onChange={e => setSelecionAñoRegreso(e.target.value)}>
+                  <option value="">Elegir año</option>
+                  {
+                    años.map(año => (
+                      <option key={año} value={`${año}`}>{año}</option>
+                    ))
+                  }
+                </select>
+                <select name="mes" id="mes" value={mesElegidoRegreso} onChange={e => setMesElegidoRegreso(e.target.value)}>
+                  <option value="">Elegir mes</option>
+                  {
+                    meses.map(mes => (
+                      <option key={mes} value={`${mes}`}>{mes}</option>
+                    ))
+                  }
+                </select>
+                <select name="dia" id="dia" value={diaRegreso} onChange={e => setDiaRegreso(e.target.value)}>
+                  <option value="">Elegir dia</option>
+                  {
+                    arrDiasRegreso.map(dia => (
+                      <option key={dia} value={`${dia}`}>{dia}</option>
+                    ))
+                  }
+                </select>
+              </div>
             </div>
-          </div>
+          }
         </div>
         <div className='seleccionarFecha__card--info'>
           <p><b>$</b> Precios bajos</p>

@@ -88,7 +88,10 @@ const FinalizarCompra = () => {
                   Pais de Destino: {recerva.paisDestino}
                   <b></b>
                 </p>
-                <p>Fecha de llegada: {recerva.regreso}</p>
+              {
+                recerva.tipoVuelo &&
+                  <p>Fecha de llegada: {recerva.regreso}</p>
+                }
               </div>
             </div>
           </div>

@@ -181,6 +181,7 @@ const Home = ({objetoApi, setObjetoApi}) => {
                 id="redondo"
                 name="vuelo"
               />{" "}
+              
               <label htmlFor="redondo">Redondo</label>
               <input
                 onClick={() => setTypeVuelo(false)}
@@ -217,6 +218,7 @@ const Home = ({objetoApi, setObjetoApi}) => {
                 <div
                   className="selection"
                   id="fecha_sali"
+                  style={{borderRadius: typeVuelo ? '8px 0 0 8px' : '8px' }}
                   onClick={() => setModalSeleccionFechas(!modalSeleccionFecha)}
                 >
                   <p>Salida</p>
@@ -226,18 +228,21 @@ const Home = ({objetoApi, setObjetoApi}) => {
                       : "----"}
                   </p>
                 </div>
-                <div
-                  className="selection"
-                  id="fecha_reg"
-                  onClick={() => setModalSeleccionFechas(!modalSeleccionFecha)}
-                >
-                  <p>Regreso</p>
-                  <p>
-                    {selecionAñoRegreso && mesElegidoRegreso && diaRegreso
-                      ? `${diaRegreso}/${mesElegidoRegreso}/${selecionAñoRegreso}`
-                      : "----"}
-                  </p>
-                </div>
+                {
+                  typeVuelo &&
+                  <div
+                    className="selection"
+                    id="fecha_reg"
+                    onClick={() => setModalSeleccionFechas(!modalSeleccionFecha)}
+                  >
+                    <p>Regreso</p>
+                    <p>
+                      {selecionAñoRegreso && mesElegidoRegreso && diaRegreso
+                        ? `${diaRegreso}/${mesElegidoRegreso}/${selecionAñoRegreso}`
+                        : "----"}
+                    </p>
+                  </div>
+                }
               </div>
               {/* cantidad de personas que viajaran */}
               <div
@@ -293,6 +298,7 @@ const Home = ({objetoApi, setObjetoApi}) => {
             mesElegidoRegreso2={mesElegidoRegreso}
             diaSalida2={diaSalida}
             diaRegreso2={diaRegreso}
+            typeVuelo={typeVuelo}
           />
         )}
         {modalSeleccionCantidadPersonas && (

@@ -59,7 +59,7 @@ const InfoRecervacion = ({handleAsientos, objetoApiVulos, addArrayNumeros}) => {
                 </div>
               </div>
               {
-                objetoApiVulos.tipoVuelo &&
+                objetoApiVulos?.tipoVuelo &&
                 <div className="info__div--date">
                   <p className="p">Vuelo de regreso</p>
                   <div className="info__div--text">

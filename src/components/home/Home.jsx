@@ -61,7 +61,7 @@ const Home = ({objetoApi, setObjetoApi}) => {
   const putPeticionApiVuelos = (registroVuelos) => {
     axios
       .put(
-        `${apiInfoVuelos}/recerva/2`,
+        `${apiInfoVuelos}/recerva/1`,
         registroVuelos
       )
       .then((res) => {
@@ -178,17 +178,17 @@ const Home = ({objetoApi, setObjetoApi}) => {
               <input
                 onClick={() => setTypeVuelo(true)}
                 type="radio"
-                id="vuelo"
+                id="redondo"
                 name="vuelo"
               />{" "}
-              Redondo
+              <label htmlFor="redondo">Redondo</label>
               <input
                 onClick={() => setTypeVuelo(false)}
                 type="radio"
-                id="vuelo"
+                id="sencillo"
                 name="vuelo"
               />
-              Sencillo
+              <label htmlFor="sencillo">Sencillo</label>
             </div>
             <div className="home__card--selection">
               {/* seleccion destinos */}

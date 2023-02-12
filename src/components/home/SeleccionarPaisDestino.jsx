@@ -31,7 +31,7 @@ const SelecionarPaisDestino = ({
         >
           <option value={""}>seleccionar pais</option>
           {paises.map((pais,i) => (
-            <option key={i} value={`${pais.name}`}>{pais.name}</option>
+            <option key={i} value={`${pais.nombre}`}>{pais.nombre}</option>
           ))}
         </select>
         <button

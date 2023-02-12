@@ -1,28 +1,25 @@
-.finalizarCompra{
+.finalizarCompra {
   display: flex;
   justify-content: center;
   align-items: center;
   background-color: #e3e0f0;
   width: 100vw;
   height: 100vh;
-
 }
 
-.finalizarCompra__container{
-  border: 1px solid rgb(0, 0, 0);
+.finalizarCompra__container {
   width: 50%;
   height: 95vh;
   padding: 1rem 3rem 4rem 3rem;
   border-radius: 10px;
-  box-shadow: 0 0 5px rgb(147, 146, 146);
   overflow-y: auto;
   position: relative;
 }
-.finalizarCompra__container::-webkit-scrollbar{
+.finalizarCompra__container::-webkit-scrollbar {
   width: 2px;
   background-color: #e3e0f0;
 }
-.finalizarCompra__container::-webkit-scrollbar-thumb{
+.finalizarCompra__container::-webkit-scrollbar-thumb {
   width: 100%;
   background-color: rgb(115, 45, 237);
 }
@@ -37,7 +34,6 @@
   flex-direction: column;
   justify-content: space-between;
   border: 1px solid #bb72ff;
-
 }
 
 .infoReserva {
@@ -51,7 +47,7 @@
   padding: 0 2rem;
   font-size: 18px;
 }
-.nombre{
+.nombre {
   width: 100%;
   height: 3rem;
   background-color: #6521ee93;
@@ -62,11 +58,11 @@
   align-items: center;
   padding: 0 4rem 0 5rem;
 }
-.nombre b{
+.nombre b {
   color: #bbeeff;
   font-size: 17px;
 }
-.paisOrigen{
+.paisOrigen {
   width: 100%;
   height: 3rem;
   background-color: #6521ee93;
@@ -77,7 +73,7 @@
   align-items: center;
   padding: 0 4rem 0 5rem;
 }
-.paisDestino{
+.paisDestino {
   width: 100%;
   height: 3rem;
   background-color: #6521ee93;
@@ -89,7 +85,7 @@
   padding: 0 4rem 0 5rem;
   border-radius: 0 0 10px 10px;
 }
-.btn__finalizarCompra{
+.btn__finalizarCompra {
   position: relative;
   left: 45%;
   top: 1.5rem;
@@ -101,8 +97,7 @@
   background-color: #3ef277;
   font-weight: bold;
   cursor: pointer;
-
 }
-.btn__finalizarCompra:hover{
+.btn__finalizarCompra:hover {
   background-color: #adf0c2;
 }

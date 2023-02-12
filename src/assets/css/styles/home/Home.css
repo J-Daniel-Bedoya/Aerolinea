@@ -58,6 +58,9 @@ h2 {
 .vuelo_style h2 {
   padding-right: 1rem;
 }
+.vuelo_style input, .vuelo_style label {
+  cursor: pointer;
+}
 .home__card--selection {
   display: flex;
   flex-direction: row;

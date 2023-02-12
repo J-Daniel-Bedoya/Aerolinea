@@ -151,7 +151,7 @@ const ConfirmacionVuelos = ({ objetoApiVulos }) => {
               Cambiar vuelo
             </button>
             <VuelosSalida objetoApiVulos={objetoApiVulos} />
-            {objetoApiVulos.tipoVuelo && (
+            {objetoApiVulos?.tipoVuelo && (
               <>
                 <VuelosRegreso objetoApiVulos={objetoApiVulos} />
               </>

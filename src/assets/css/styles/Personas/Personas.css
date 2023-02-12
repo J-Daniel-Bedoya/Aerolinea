@@ -1,0 +1,41 @@
+.personas {
+  width: 100%;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1.5rem;
+}
+.personas__form {
+  width: 35rem;
+  height: auto;
+  padding: 2rem;
+}
+
+.personas__form--container {
+  margin-bottom: 2rem;
+  padding: 2rem;
+  background-color: #d5f7fc58;
+  border-radius: .7rem;
+  box-shadow: 0 8px 13px #d8d7d7;
+}
+
+.personas__form--container div {
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 1rem;
+  gap: .4rem;
+}
+
+.personas__form--generos div {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+  padding: .2rem 0 0 1rem;  
+}
+
+.input input {
+  padding: .3rem;
+  border-radius: .2rem;
+  border: 1px solid #817f7f;
+}

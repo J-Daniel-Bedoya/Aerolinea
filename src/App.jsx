@@ -16,7 +16,7 @@ function App() {
   // };
   useEffect(() => {
     axios
-      .get(`${apiInfoVuelos}/recerva/2`)
+      .get(`${apiInfoVuelos}/recerva/1`)
       .then((res) => {
         setObjetoApi(res.data);
         // setDatos(res.data);

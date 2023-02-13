@@ -40,7 +40,7 @@ const Home = ({objetoApi, setObjetoApi}) => {
   // fechas
   const [selecionAñoSalida, setSelecionAñoSalida] = useState(0);
   const [selecionAñoRegreso, setSelecionAñoRegreso] = useState(0);
-  const [mesElegidoSalida, setMesElegidoSalida] = useState("");
+  const [mesElegidoSalida, setMesElegidoSalida] = useState(""); 
   const [mesElegidoRegreso, setMesElegidoRegreso] = useState("");
   const [diaSalida, setDiaSalida] = useState(0);
   const [diaRegreso, setDiaRegreso] = useState(0);
@@ -99,6 +99,7 @@ const Home = ({objetoApi, setObjetoApi}) => {
 
     putPeticionApiVuelos(registroVuelos);
     getPeticionApiVuelos();
+    dispatch(setMostrarSelccionPais(''));
     navigate("/confirmacion_vuelos");
   };
 
@@ -139,7 +140,6 @@ const Home = ({objetoApi, setObjetoApi}) => {
     setNiños(niños);
     setBebes(bebes);
     getPeticionApiVuelos();
-    setNumActual(false);
   };
 
   const infoFechaRecerva = (
@@ -209,7 +209,7 @@ const Home = ({objetoApi, setObjetoApi}) => {
                 >
                   <p>Selecione un Destino</p>
                   <b>
-                    {mostrarSeleccionPais !== "" ? mostrarSeleccionPais : "---"}
+                    {mostrarSeleccionPais !== "" ? mostrarSeleccionPais : "----"}
                   </b>
                 </div>
               </div>

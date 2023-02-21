@@ -10,7 +10,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { setMostrarSelccionPais } from "../../store/slices/infoPaisApi.slice";
 
 
-const Home = ({objetoApi, setObjetoApi}) => {
+const Home = () => {
   const dispatch = useDispatch();
   const mostrarSeleccionPais = useSelector((state) => state.infoPaisApi);
   // esta es la url de la api mymapi
@@ -29,12 +29,11 @@ const Home = ({objetoApi, setObjetoApi}) => {
   const [niños, setNiños] = useState(0); //este es el total de niños que viajaran
   const [bebes, setBebes] = useState(0); //este es el total de bebés que viajaran
   // cambios
-  // const [objetoApi, setObjetoApi] = useState({});
+  const [objetoApiVuelos, setObjetoApiVuelos] = useState([]);
   // modales
   const [modalSeleccionPais, setModalSeleccionPais] = useState(false); // este es el boton del modal para selecionar pais
   const [modalSeleccionFecha, setModalSeleccionFechas] = useState(false); //este es el boton para selecionar fechas
-  const [modalSeleccionCantidadPersonas, setModalSeleccionCantidadPersonas] =
-    useState(false); //este es el boton para selcionar catidad de personas
+  const [modalSeleccionCantidadPersonas, setModalSeleccionCantidadPersonas] = useState(false); //este es el boton para selcionar catidad de personas
 
 
   // fechas
@@ -46,26 +45,25 @@ const Home = ({objetoApi, setObjetoApi}) => {
   const [diaRegreso, setDiaRegreso] = useState(0);
   // navegación
   const navigate = useNavigate();
-  const [datos, setDatos] = useState({});
+  
   // consumo de apis
   const getPeticionApiVuelos = () => {
     axios
-      .get(`${apiInfoVuelos}/recerva/2`)
+      .get(`${apiInfoVuelos}/recerva`)
       .then((res) => {
-        setObjetoApi(res.data);
-        setDatos(res.data);
+        setObjetoApiVuelos(res.data);
       })
       .catch((err) => console.log(err));
   };
 
   const putPeticionApiVuelos = (registroVuelos) => {
     axios
-      .put(
-        `${apiInfoVuelos}/recerva/1`,
+      .post(
+        `${apiInfoVuelos}/recerva`,
         registroVuelos
       )
       .then((res) => {
-        setObjetoApi(res.data);
+        setObjetoApiVuelos(res.data);
         Swal.fire({
           icon: "success",
           title: "Recervación exitosa",
@@ -123,7 +121,6 @@ const Home = ({objetoApi, setObjetoApi}) => {
       .get(`${urlPais}&lat=${log}&lon=${lat}`)
       .then((res) => {
         setPaisOrigen(res.data.data.address.country);
-        // console.log(res.data.data.address.country)
       })
       .catch((error) => console.log(error));
   };
@@ -161,20 +158,73 @@ const Home = ({objetoApi, setObjetoApi}) => {
 
   return (
     <div className="Home">
-      <div className="home__title--description">
-        <h2>Busca un nuevo destino y comienza la aventura.</h2>
-        <h4 className="title_card2" htmlFor="vuelo">
-          Descubre vuelos al mejor precio y perfectos para cualquier vieaje.
-        </h4>
+
+      <div className="home__title">
+        <div className="home__tittle">
+          <p>despegar</p>
+        </div>
+        <div className={"home__title--options"}>
+          <div>
+            <p>Para ventas 01 800 518 9327</p>
+          </div>
+          <div>
+            <p>Pasaporte</p>
+          </div>
+          <div>
+            <p>Iniciar Sesión</p>
+          </div>
+          <div>
+            <p>Mis Viajes</p>
+          </div>
+          <div>
+            <p>Ayuda</p>
+          </div>
+        </div>
+      </div>
+      
+      <div className="home__options">
+        <div>
+          <p>Alojamientos</p>
+        </div>
+        <div>
+          <p>Vuelos</p>
+        </div>
+        <div>
+          <p>Paquetes</p>
+        </div>
+        <div>
+          <p>Ofertas</p>
+        </div>
+        <div>
+          <p>Rentas</p>
+        </div>
+        <div>
+          <p>Actividades</p>
+        </div>
+        <div>
+          <p>Viajes Completos</p>
+        </div>
+        <div>
+          <p>Carros</p>
+        </div>
+        <div>
+          <p>Disney</p>
+        </div>
+        <div>
+          <p>Asistencias</p>
+        </div>
+        <div>
+          <p>Traslados</p>
+        </div>
       </div>
 
-      <div className="Home__card">
-        <div className="Home__card--content">
+      <div className="home__card">
+        <div className="home__card--content">
           {/* formulario de registro para vuelos */}
           <form onSubmit={handleSubmit(submit)}>
             {/* Tipo de vuelos */}
             <div className="vuelo_style">
-              <h2>Vuelo</h2>
+              <h2>Vuelos</h2>
               <input
                 onClick={() => setTypeVuelo(true)}
                 type="radio"
@@ -182,32 +232,32 @@ const Home = ({objetoApi, setObjetoApi}) => {
                 name="vuelo"
               />{" "}
               
-              <label htmlFor="redondo">Redondo</label>
+              <label htmlFor="redondo">Ida y vuelta</label>
               <input
                 onClick={() => setTypeVuelo(false)}
                 type="radio"
                 id="sencillo"
                 name="vuelo"
               />
-              <label htmlFor="sencillo">Sencillo</label>
+              <label htmlFor="sencillo">Solo ida</label>
             </div>
             <div className="home__card--selection">
               {/* seleccion destinos */}
               <div className="home__card--destino">
                 <div
-                  className="selection"
+                  className="selection__pais"
                   id="pais_org"
                   onClick={() => setModalSeleccionPais(!modalSeleccionPais)}
                 >
-                  <p>Pais de Origen</p>
+                  <p>Origen</p>
                   <b>{paisOrigen}</b>
                 </div>
                 <div
-                  className="selection"
+                  className="selection__pais"
                   id="pais_dest"
                   onClick={() => setModalSeleccionPais(!modalSeleccionPais)}
                 >
-                  <p>Selecione un Destino</p>
+                  <p>Destino</p>
                   <b>
                     {mostrarSeleccionPais !== "" ? mostrarSeleccionPais : "----"}
                   </b>
@@ -216,7 +266,7 @@ const Home = ({objetoApi, setObjetoApi}) => {
               {/* seleccion de fechas */}
               <div className="home__card--fechas">
                 <div
-                  className="selection"
+                  className="selection__fecha"
                   id="fecha_sali"
                   style={{borderRadius: typeVuelo ? '8px 0 0 8px' : '8px' }}
                   onClick={() => setModalSeleccionFechas(!modalSeleccionFecha)}
@@ -231,7 +281,7 @@ const Home = ({objetoApi, setObjetoApi}) => {
                 {
                   typeVuelo &&
                   <div
-                    className="selection"
+                    className="selection__fecha"
                     id="fecha_reg"
                     onClick={() => setModalSeleccionFechas(!modalSeleccionFecha)}
                   >
@@ -246,7 +296,7 @@ const Home = ({objetoApi, setObjetoApi}) => {
               </div>
               {/* cantidad de personas que viajaran */}
               <div
-                className="selection"
+                className="selection__personas"
                 onClick={() =>
                   setModalSeleccionCantidadPersonas(
                     !modalSeleccionCantidadPersonas
@@ -272,7 +322,7 @@ const Home = ({objetoApi, setObjetoApi}) => {
                   </p>
                 </div>
               </div>
-              <div className="Home__btn--submit">
+              <div className="home__btn--submit">
                 <button type="submit" className="btn_vuelo">
                   <i className="fa-solid fa-check"></i>
                 </button>
@@ -291,7 +341,7 @@ const Home = ({objetoApi, setObjetoApi}) => {
         {modalSeleccionFecha && (
           <SeleccionarFecha
             infoFechaRecerva={infoFechaRecerva}
-            objetoApi={objetoApi}
+            objetoApiVuelos={objetoApiVuelos}
             selecionAñoSalida2={selecionAñoSalida}
             selecionAñoRegreso2={selecionAñoRegreso}
             mesElegidoSalida2={mesElegidoSalida}
@@ -307,7 +357,7 @@ const Home = ({objetoApi, setObjetoApi}) => {
             adultos={adultos}
             niños={niños}
             bebes={bebes}
-            objetoApi={objetoApi}
+            objetoApiVuelos={objetoApiVuelos}
           />
         )}
       </div>

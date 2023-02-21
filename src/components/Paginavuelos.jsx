@@ -2,10 +2,10 @@ import React from 'react'
 import Home from './home/Home';
 import Pagos from './home/Pagos';
  
-const PaginaVuelos = ({objetoApi, setObjetoApi}) => {
+const PaginaVuelos = ({objetoApiVuelos, setObjetoApiVuelos}) => {
   return (
     <div>
-      <Home objetoApi={objetoApi} setObjetoApi={setObjetoApi}/>
+      <Home objetoApiVuelos={objetoApiVuelos} setObjetoApiVuelos={setObjetoApiVuelos}/>
       <Pagos />
     </div>
  

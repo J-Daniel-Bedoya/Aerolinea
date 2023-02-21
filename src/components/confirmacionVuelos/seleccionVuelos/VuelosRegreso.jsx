@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { setValorMaletas2 } from "../../../store/slices/valorMaletas2.slice";
 
-const VuelosRegreso = ({ objetoApiVulos }) => {
+const VuelosRegreso = ({ apiVuelos }) => {
   const dispatch = useDispatch();
 
   const [color, setColor] = useState(0);
@@ -19,9 +19,9 @@ const VuelosRegreso = ({ objetoApiVulos }) => {
           <h1>Vuelo de regreso</h1>
         </div>
         <div className="title_datos">
-          <p className="title_fechasVuelo">{objetoApiVulos?.fechaLlegada}</p>
+          <p className="title_fechasVuelo">{apiVuelos?.fechaLlegada}</p>
           <p className="title_paisVuelo">
-            De {objetoApiVulos?.paisDestino} a {objetoApiVulos?.paisOrigen}
+            De {apiVuelos?.paisDestino} a {apiVuelos?.paisOrigen}
           </p>
           <p className="title_horariosVuelo">
             Seleccion de horarios y equipajes

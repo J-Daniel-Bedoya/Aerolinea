@@ -5,16 +5,16 @@ const SeleccionCantidadPersonas = ({
   adultos,
   niños,
   bebes,
-  objetoApi,
+  objetoApiVuelos,
 }) => {
   const [contadorAdultos, setContadorAdultos] = useState(
-    objetoApi?.totalPersonas?.adultos || adultos
+    objetoApiVuelos?.totalPersonas?.adultos || adultos
   );
   const [contadorNiños, setContadorNiños] = useState(
-    objetoApi?.totalPersonas?.niños || niños
+    objetoApiVuelos?.totalPersonas?.niños || niños
   );
   const [contadorBebes, setContadorBebes] = useState(
-    objetoApi?.totalPersonas?.bebes || bebes
+    objetoApiVuelos?.totalPersonas?.bebes || bebes
   );
 
   return (

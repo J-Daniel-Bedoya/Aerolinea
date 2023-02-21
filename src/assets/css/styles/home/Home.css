@@ -2,42 +2,73 @@
 
 .Home {
   width: 100%;
-  height: 100vh;
+  height: auto;
   background-color: #fff;
   position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 3rem;
-  padding-top: 4rem;
 }
 
 h2 {
   font-size: 1.6rem;
 }
-.home__title--description {
+.home__title {
   /* background-color: #b78adf; */
-  width: 90%;
+  width: 100%;
+  height: 3.1rem;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
 }
-
-.Home__card--content {
+.home__tittle {
+  width: 72%;
+  text-align: center;
+  font-size: 23px;
+  color: #581ee0;
+  font-weight: 600;
+}
+.home__title--options {
+  width: 100%;
+  height: 100%;
+  background-color: #d3d3d6;
+  display: flex;
+  align-items: center;
+  gap: 3rem;
+  padding-left: 4rem;
+  border-radius: 0 0 0 1.5rem;
+}
+.home__options{
+  width: 100%;
+  height: 5.8rem;
+  /* background-color: #e5cafc; */
+  display: flex;
+  align-items: center;
+  gap: 1.75rem;
+  padding-left: 7.3rem;
+}
+.home__card {
+  width: 100%;
+  height: 15.1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: linear-gradient(0, #A780FF 0%, #8554f7 100%)
+  /* padding: 2rem; */
+}
+.home__card--content {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  width: 88rem;
-  height: 18rem;
-  padding: 2rem;
-  background-color: #7707da;
-  /* position: relative; */
-  /* z-index: 1; */
+  width: 70%;
+  height: 13rem;
+  padding: .8rem 2rem .8rem .8rem;
+  background-color: #270570;
   border-radius: 15px;
 }
 
 .title_card2 {
-  color: rgba(54, 52, 52, 0.698);
+  color: #363434b2;
 }
-.Home__card--selection {
-  background-color: rgba(221, 218, 218, 0);
+.home__card--selection {
+  background-color: #dddada00;
   width: 100%;
   display: flex;
   flex-wrap: wrap;
@@ -46,7 +77,6 @@ h2 {
 }
 
 .vuelo_style {
-  background-color: white;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -54,11 +84,13 @@ h2 {
   width: 20rem;
   height: 2.1rem;
   border-radius: 12px;
+  color: #fff;
 }
 .vuelo_style h2 {
   padding-right: 1rem;
 }
-.vuelo_style input, .vuelo_style label {
+.vuelo_style input,
+.vuelo_style label {
   cursor: pointer;
 }
 .home__card--selection {
@@ -68,13 +100,13 @@ h2 {
   align-items: center;
   width: 100%;
   height: 10rem;
-  gap: 3rem;
+  gap: .8rem;
   /* background-color: rgb(247, 243, 243); */
 }
 
-.selection {
-  width: 10rem;
-  height: 4rem;
+.selection__pais, .selection__fecha, .selection__personas {
+  width: 12rem;
+  height: 3.8rem;
   background-color: white;
   display: flex;
   flex-direction: column;
@@ -82,55 +114,70 @@ h2 {
   align-items: center;
   border: 1px solid #00000059;
   border-radius: 8px;
-  transition: .2s;
+  transition: 0.2s;
+}
+.selection__fecha {
+  width: 8.5rem;
+}
+.selection__personas {
+  width: 11rem;
 }
 .home__card--destino {
   display: flex;
 }
-.selection:hover{
+.selection:hover {
   cursor: pointer;
   background-color: #1f046b;
   color: #fff;
 }
-#pais_org, #fecha_sali{
+#pais_org,
+#fecha_sali {
   border-radius: 8px 0 0 8px;
 }
-#pais_dest, #fecha_reg{
+#pais_dest,
+#fecha_reg {
   border-radius: 0 8px 8px 0;
 }
 .home__card--fechas {
   display: flex;
 }
 
-.Home__btn--submit{
-    display: flex;
-    justify-content: center;
+.home__btn--submit {
+  display: flex;
+  justify-content: center;
 }
-.btn_vuelo{
-    display: flex;
-    width: 4rem;
-    height: 4rem;
-    border-radius: 50%;
-    justify-content: center;
-    align-items: center;
-    border: none;
-    background-color: #ffffff;
-    transition: .7s;
+.btn_vuelo {
+  display: flex;
+  width: 7.5rem;
+  height: 3.1rem;
+  border-radius: 2rem;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  background-color: #ffffff;
+  transition: 0.7s;
 }
 .fa-check {
   font-size: 1.6rem;
 }
-.btn_vuelo:hover{
+.btn_vuelo:hover {
   cursor: pointer;
-  background-color: #1f046b;
+  background-color: #1b035d;
   color: #fff;
   transform: rotate(360deg);
+  outline: 1px solid #fff;
 }
-.cantidad__personas>p{
+.cantidad__personas {
+  display: flex;
+  gap: 1.8rem;
+}
+.cantidad__personas > p {
   font-size: 16px;
   font-weight: bold;
 }
-.fa-user, .fa-child, .fa-baby-carriage {
+.fa-user,
+.fa-child,
+.fa-baby-carriage {
   font-size: 13px;
   color: #6b56a6;
 }

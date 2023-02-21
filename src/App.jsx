@@ -10,26 +10,26 @@ import Personas from "./components/personas/Personas";
 function App() {
 
   const apiInfoVuelos = "https://apiaerolinea-production.up.railway.app/api/v1";
-  const [objetoApi, setObjetoApi] = useState({});
+  const [objetoApiVuelos, setObjetoApiVuelos] = useState([]);
   // const getPeticionApiVuelos = () => {
 
   // };
   useEffect(() => {
     axios
-      .get(`${apiInfoVuelos}/recerva/1`)
+      .get(`${apiInfoVuelos}/recerva`)
       .then((res) => {
-        setObjetoApi(res.data);
-        // setDatos(res.data);
+        setObjetoApiVuelos(res.data);
       })
       .catch((err) => console.log(err));
-  }, []);
+    }, []);
+    console.log(objetoApiVuelos)
 
   return (
     <HashRouter>
       <div className="App">
         <Routes>
-          <Route path="/" element={<PaginaVuelos objetoApi={objetoApi} setObjetoApi={setObjetoApi}/>}/>
-          <Route path="/confirmacion_vuelos" element={<ConfirmacionVuelos objetoApiVulos={objetoApi}/>}/>
+          <Route path="/" element={<PaginaVuelos objetoApiVuelos={objetoApiVuelos} setObjetoApiVuelos={setObjetoApiVuelos}/>}/>
+          <Route path="/confirmacion_vuelos" element={<ConfirmacionVuelos />}/>
           <Route path="/personas" element={<Personas />}/>
           <Route path="/finalizar_compra" element={<FinalizarCompra />}/>
         </Routes>

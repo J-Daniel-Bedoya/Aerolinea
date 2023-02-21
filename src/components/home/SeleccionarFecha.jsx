@@ -4,7 +4,7 @@ import años from '../../../public/Años.json';
 
 const SeleccionarFecha = ({
   infoFechaRecerva, 
-  objetoApi, 
+  objetoApiVuelos, 
   selecionAñoRegreso2, 
   selecionAñoSalida2,
   mesElegidoSalida2,
@@ -32,8 +32,8 @@ const SeleccionarFecha = ({
 
   // console.log(selecionAñoRegreso)
   useEffect(() => {
-    const arrFechaSalida = objetoApi?.fechaSalida?.split("/");
-    const arrFechaRegreso = objetoApi?.fechaLlegada?.split("/");
+    const arrFechaSalida = objetoApiVuelos?.fechaSalida?.split("/");
+    const arrFechaRegreso = objetoApiVuelos?.fechaLlegada?.split("/");
     const diaSalida = Number(arrFechaSalida?.[0]);
     const diaRegreso = Number(arrFechaRegreso?.[0]);
     const mesSalida = arrFechaSalida?.[1];

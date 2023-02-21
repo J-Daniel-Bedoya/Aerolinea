@@ -2,19 +2,19 @@ import React from 'react'
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
  
-const InfoRecervacion = ({handleAsientos, objetoApiVulos, addArrayNumeros}) => {
+const InfoRecervacion = ({apiVuelos}) => {
 
-  const valores = objetoApiVulos?.paisOrigen; 
+  const valores = apiVuelos?.paisOrigen; 
   const siglas = valores?.slice(0,3);
-  const valores1 = objetoApiVulos?.paisDestino; 
+  const valores1 = apiVuelos?.paisDestino; 
   const siglas1 = valores1?.slice(0,3);
 
   const valorMaletas = useSelector(state => state.valorMaletas);
   const valorMaletas2 = useSelector(state => state.valorMaletas2);
 
-  const tlAdultos = objetoApiVulos?.adultos * 450;
-  const tlNiños = objetoApiVulos?.niños * 350;
-  const tlBebes = objetoApiVulos?.bebes * 250;
+  const tlAdultos = apiVuelos?.adultos * 450;
+  const tlNiños = apiVuelos?.niños * 350;
+  const tlBebes = apiVuelos?.bebes * 250;
   const totalTarifaBase = tlAdultos + tlNiños + tlBebes;
   
   const sumaValoresMaletas = valorMaletas + valorMaletas2;
@@ -36,9 +36,9 @@ const InfoRecervacion = ({handleAsientos, objetoApiVulos, addArrayNumeros}) => {
             <div className="info__pasajeros" id="info__pasajeros">
               <p>pasajeros</p>
               <div>
-                <p>{objetoApiVulos?.adultos} adultos</p>
-                <p>{objetoApiVulos?.niños} niños</p>
-                <p>{objetoApiVulos?.bebes} bebes</p>
+                <p>{apiVuelos?.adultos} adultos</p>
+                <p>{apiVuelos?.niños} niños</p>
+                <p>{apiVuelos?.bebes} bebes</p>
               </div>
             </div>
             <div className="info__date">
@@ -55,11 +55,11 @@ const InfoRecervacion = ({handleAsientos, objetoApiVulos, addArrayNumeros}) => {
                     <p>05:45 PM </p>
                     <p>06:47 PM</p>
                   </div>
-                  <p className="fecha__text">{objetoApiVulos?.fechaSalida}</p>
+                  <p className="fecha__text">{apiVuelos?.fechaSalida}</p>
                 </div>
               </div>
               {
-                objetoApiVulos?.tipoVuelo &&
+                apiVuelos?.tipoVuelo &&
                 <div className="info__div--date">
                   <p className="p">Vuelo de regreso</p>
                   <div className="info__div--text">
@@ -72,7 +72,7 @@ const InfoRecervacion = ({handleAsientos, objetoApiVulos, addArrayNumeros}) => {
                       <p>05:45 PM </p>
                       <p>06:47 PM</p>
                     </div>
-                    <p className="fecha__text">{objetoApiVulos?.fechaLlegada}</p>
+                    <p className="fecha__text">{apiVuelos?.fechaLlegada}</p>
                   </div>
                 </div>
               }

@@ -161,22 +161,28 @@ const Home = () => {
 
       <div className="home__title">
         <div className="home__tittle">
+          <i class="fa-solid fa-feather"></i>
           <p>despegar</p>
         </div>
-        <div className={"home__title--options"}>
+        <div className="home__title--options">
           <div>
+            <i className="fa-solid fa-headphones"></i>
             <p>Para ventas 01 800 518 9327</p>
           </div>
           <div>
+            <i class="fa-solid fa-passport"></i>
             <p>Pasaporte</p>
           </div>
           <div>
+            <i class="fa-solid fa-user"></i>
             <p>Iniciar Sesión</p>
           </div>
           <div>
+            <i className="fa-solid fa-suitcase home__options--icon"></i> 
             <p>Mis Viajes</p>
           </div>
           <div>
+            <i class="fa-regular fa-circle-question"></i>
             <p>Ayuda</p>
           </div>
         </div>
@@ -184,36 +190,72 @@ const Home = () => {
       
       <div className="home__options">
         <div>
+          <div className="home__options--icons">
+            <i className="fa-solid fa-bed home__options--icon"></i>
+          </div>
           <p>Alojamientos</p>
         </div>
         <div>
+          <div className="home__options--icons">
+            <i className="fa-solid fa-plane-departure home__options--icon"></i>          
+          </div>
           <p>Vuelos</p>
         </div>
         <div>
+          <div className="home__options--icons">
+            <i className="fa-solid fa-suitcase home__options--icon"></i>            
+          </div>
           <p>Paquetes</p>
         </div>
         <div>
+          <div className="home__options--icons">
+            <i className="fa-solid fa-fire-flame-curved home__options--icon"></i>  
+          </div>
           <p>Ofertas</p>
         </div>
         <div>
+          <div className="home__options--icons">
+            <i className="fa-solid fa-house-chimney home__options--icon"></i>          
+          </div>
           <p>Rentas</p>
         </div>
         <div>
+          <div className="home__options--icons">
+            <i className="fa-solid fa-ticket home__options--icon"></i>          
+          </div>
           <p>Actividades</p>
         </div>
-        <div>
-          <p>Viajes Completos</p>
+        <div id="icon__viajes">
+          <div className="home__options--icons">
+            <i className="fa-solid fa-suitcase-rolling home__options--icon"></i>            
+          </div>
+          <div id="text__icon">
+            <p>Viajes</p>
+            <p>Completos</p>
+          </div>
         </div>
         <div>
+          <div className="home__options--icons">
+          <i className="fa-solid fa-car-side home__options--icon"></i>            
+          </div>
           <p>Carros</p>
         </div>
         <div>
+          <div className="home__options--icons">
+            <i className="fa-brands fa-fort-awesome home__options--icon"></i>            
+          </div>
           <p>Disney</p>
         </div>
         <div>
+          <div className="home__options--icons">
+            <i className="fa-solid fa-suitcase-medical home__options--icon"></i>            
+          </div>
           <p>Asistencias</p>
         </div>
         <div>
+          <div className="home__options--icons">
+            <i className="fa-solid fa-truck-fast home__options--icon"></i>
+          </div>
           <p>Traslados</p>
         </div>
       </div>

@@ -7,22 +7,25 @@ import VuelosRegreso from "./seleccionVuelos/VuelosRegreso";
 import VuelosSalida from "./seleccionVuelos/VuelosSalida";
 
 const ConfirmacionVuelos = () => {
-
   const apiInfoVuelos = "https://apiaerolinea-production.up.railway.app/api/v1";
   const navigate = useNavigate();
   const [objetoApiVuelos, setObjetoApiVuelos] = useState([]);
 
   useEffect(() => {
-    axios.get(`${apiInfoVuelos}/recerva`)
-    .then(res => {
-      setObjetoApiVuelos(res.data)
-    })
-  }, [])
-  const apiVuelos = objetoApiVuelos[objetoApiVuelos?.length-1]
-
+    axios.get(`${apiInfoVuelos}/recerva`).then((res) => {
+      setObjetoApiVuelos(res.data);
+    });
+  }, []);
+  const apiVuelos = objetoApiVuelos[objetoApiVuelos?.length - 1];
 
   return (
     <div className="confirmacion_vuelos">
+      {/* info reservación */}
+      <InfoRecervacion
+        // handleAsientos={handleAsientos}
+        apiVuelos={apiVuelos}
+        // addArrayNumeros={addArrayNumeros}
+      />
       <div className="configuracionVuelos_container">
         <button
           onClick={() => navigate("/")}
@@ -43,12 +46,6 @@ const ConfirmacionVuelos = () => {
           </>
         )}
       </div>
-      {/* info reservación */}
-      <InfoRecervacion
-        // handleAsientos={handleAsientos}
-        apiVuelos={apiVuelos}
-        // addArrayNumeros={addArrayNumeros}
-      />
     </div>
   );
 };

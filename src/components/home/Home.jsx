@@ -33,19 +33,19 @@ const Home = () => {
   // modales
   const [modalSeleccionPais, setModalSeleccionPais] = useState(false); // este es el boton del modal para selecionar pais
   const [modalSeleccionFecha, setModalSeleccionFechas] = useState(false); //este es el boton para selecionar fechas
-  const [modalSeleccionCantidadPersonas, setModalSeleccionCantidadPersonas] = useState(false); //este es el boton para selcionar catidad de personas
-
+  const [modalSeleccionCantidadPersonas, setModalSeleccionCantidadPersonas] =
+    useState(false); //este es el boton para selcionar catidad de personas
 
   // fechas
   const [selecionAñoSalida, setSelecionAñoSalida] = useState(0);
   const [selecionAñoRegreso, setSelecionAñoRegreso] = useState(0);
-  const [mesElegidoSalida, setMesElegidoSalida] = useState(""); 
+  const [mesElegidoSalida, setMesElegidoSalida] = useState("");
   const [mesElegidoRegreso, setMesElegidoRegreso] = useState("");
   const [diaSalida, setDiaSalida] = useState(0);
   const [diaRegreso, setDiaRegreso] = useState(0);
   // navegación
   const navigate = useNavigate();
-  
+
   // consumo de apis
   const getPeticionApiVuelos = () => {
     axios
@@ -58,10 +58,7 @@ const Home = () => {
 
   const putPeticionApiVuelos = (registroVuelos) => {
     axios
-      .post(
-        `${apiInfoVuelos}/recerva`,
-        registroVuelos
-      )
+      .post(`${apiInfoVuelos}/recerva`, registroVuelos)
       .then((res) => {
         setObjetoApiVuelos(res.data);
         Swal.fire({
@@ -74,16 +71,14 @@ const Home = () => {
           },
           confirmButtonText: "Listo",
         });
-        
       })
       .catch((error) => console.log(error));
   };
 
   const fechaSalida = `${diaSalida}/${mesElegidoSalida}/${selecionAñoSalida}`;
-  const fechaLlegada = `${diaRegreso}/${mesElegidoRegreso}/${selecionAñoRegreso}`
+  const fechaLlegada = `${diaRegreso}/${mesElegidoRegreso}/${selecionAñoRegreso}`;
 
   const submit = async () => {
-
     const registroVuelos = {
       tipoVuelo: typeVuelo,
       paisOrigen: paisOrigen,
@@ -97,7 +92,7 @@ const Home = () => {
 
     putPeticionApiVuelos(registroVuelos);
     getPeticionApiVuelos();
-    dispatch(setMostrarSelccionPais(''));
+    dispatch(setMostrarSelccionPais(""));
     navigate("/confirmacion_vuelos");
   };
 
@@ -156,109 +151,12 @@ const Home = () => {
     setDiaRegreso(diaRegreso);
   };
 
+
+  // console.log(options);
+
   return (
     <div className="Home">
 
-      <div className="home__title">
-        <div className="home__tittle">
-          <i class="fa-solid fa-feather"></i>
-          <p>despegar</p>
-        </div>
-        <div className="home__title--options">
-          <div>
-            <i className="fa-solid fa-headphones"></i>
-            <p>Para ventas 01 800 518 9327</p>
-          </div>
-          <div>
-            <i class="fa-solid fa-passport"></i>
-            <p>Pasaporte</p>
-          </div>
-          <div>
-            <i class="fa-solid fa-user"></i>
-            <p>Iniciar Sesión</p>
-          </div>
-          <div>
-            <i className="fa-solid fa-suitcase home__options--icon"></i> 
-            <p>Mis Viajes</p>
-          </div>
-          <div>
-            <i class="fa-regular fa-circle-question"></i>
-            <p>Ayuda</p>
-          </div>
-        </div>
-      </div>
-      
-      <div className="home__options">
-        <div>
-          <div className="home__options--icons">
-            <i className="fa-solid fa-bed home__options--icon"></i>
-          </div>
-          <p>Alojamientos</p>
-        </div>
-        <div>
-          <div className="home__options--icons">
-            <i className="fa-solid fa-plane-departure home__options--icon"></i>          
-          </div>
-          <p>Vuelos</p>
-        </div>
-        <div>
-          <div className="home__options--icons">
-            <i className="fa-solid fa-suitcase home__options--icon"></i>            
-          </div>
-          <p>Paquetes</p>
-        </div>
-        <div>
-          <div className="home__options--icons">
-            <i className="fa-solid fa-fire-flame-curved home__options--icon"></i>  
-          </div>
-          <p>Ofertas</p>
-        </div>
-        <div>
-          <div className="home__options--icons">
-            <i className="fa-solid fa-house-chimney home__options--icon"></i>          
-          </div>
-          <p>Rentas</p>
-        </div>
-        <div>
-          <div className="home__options--icons">
-            <i className="fa-solid fa-ticket home__options--icon"></i>          
-          </div>
-          <p>Actividades</p>
-        </div>
-        <div id="icon__viajes">
-          <div className="home__options--icons">
-            <i className="fa-solid fa-suitcase-rolling home__options--icon"></i>            
-          </div>
-          <div id="text__icon">
-            <p>Viajes</p>
-            <p>Completos</p>
-          </div>
-        </div>
-        <div>
-          <div className="home__options--icons">
-          <i className="fa-solid fa-car-side home__options--icon"></i>            
-          </div>
-          <p>Carros</p>
-        </div>
-        <div>
-          <div className="home__options--icons">
-            <i className="fa-brands fa-fort-awesome home__options--icon"></i>            
-          </div>
-          <p>Disney</p>
-        </div>
-        <div>
-          <div className="home__options--icons">
-            <i className="fa-solid fa-suitcase-medical home__options--icon"></i>            
-          </div>
-          <p>Asistencias</p>
-        </div>
-        <div>
-          <div className="home__options--icons">
-            <i className="fa-solid fa-truck-fast home__options--icon"></i>
-          </div>
-          <p>Traslados</p>
-        </div>
-      </div>
 
       <div className="home__card">
         <div className="home__card--content">
@@ -273,7 +171,6 @@ const Home = () => {
                 id="redondo"
                 name="vuelo"
               />{" "}
-              
               <label htmlFor="redondo">Ida y vuelta</label>
               <input
                 onClick={() => setTypeVuelo(false)}
@@ -301,7 +198,9 @@ const Home = () => {
                 >
                   <p>Destino</p>
                   <b>
-                    {mostrarSeleccionPais !== "" ? mostrarSeleccionPais : "----"}
+                    {mostrarSeleccionPais !== ""
+                      ? mostrarSeleccionPais
+                      : "----"}
                   </b>
                 </div>
               </div>
@@ -310,22 +209,23 @@ const Home = () => {
                 <div
                   className="selection__fecha"
                   id="fecha_sali"
-                  style={{borderRadius: typeVuelo ? '8px 0 0 8px' : '8px' }}
+                  style={{ borderRadius: typeVuelo ? "8px 0 0 8px" : "8px" }}
                   onClick={() => setModalSeleccionFechas(!modalSeleccionFecha)}
                 >
                   <p>Salida</p>
                   <p>
-                    {selecionAñoSalida && mesElegidoSalida && diaSalida 
+                    {selecionAñoSalida && mesElegidoSalida && diaSalida
                       ? `${diaSalida}/${mesElegidoSalida}/${selecionAñoSalida}`
                       : "----"}
                   </p>
                 </div>
-                {
-                  typeVuelo &&
+                {typeVuelo && (
                   <div
                     className="selection__fecha"
                     id="fecha_reg"
-                    onClick={() => setModalSeleccionFechas(!modalSeleccionFecha)}
+                    onClick={() =>
+                      setModalSeleccionFechas(!modalSeleccionFecha)
+                    }
                   >
                     <p>Regreso</p>
                     <p>
@@ -334,7 +234,7 @@ const Home = () => {
                         : "----"}
                     </p>
                   </div>
-                }
+                )}
               </div>
               {/* cantidad de personas que viajaran */}
               <div
@@ -348,19 +248,16 @@ const Home = () => {
                 <p>Personas</p>
                 <div className="cantidad__personas">
                   <p>
-                    {adultos !== 0
-                      && `${adultos}`
-                    } <i className="fa-solid fa-user"></i>
+                    {adultos !== 0 && `${adultos}`}{" "}
+                    <i className="fa-solid fa-user"></i>
                   </p>
                   <p>
-                    {niños !== 0
-                      && `${niños}`
-                    } <i className="fa-solid fa-child"></i>
+                    {niños !== 0 && `${niños}`}{" "}
+                    <i className="fa-solid fa-child"></i>
                   </p>
                   <p>
-                    {bebes !== 0
-                      && `${bebes}`
-                    } <i className="fa-solid fa-baby-carriage"></i>
+                    {bebes !== 0 && `${bebes}`}{" "}
+                    <i className="fa-solid fa-baby-carriage"></i>
                   </p>
                 </div>
               </div>

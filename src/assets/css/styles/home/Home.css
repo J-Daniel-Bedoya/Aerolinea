@@ -13,7 +13,7 @@ h2 {
 .home__title {
   /* background-color: #b78adf; */
   width: 100%;
-  height: 3.1rem;
+  height: 3.6rem;
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -25,7 +25,7 @@ h2 {
   font-weight: 600;
   display: flex;
   justify-content: center;
-  gap: 1rem;
+  gap: .6rem;
 }
 .fa-feather {
   font-size: 30px;
@@ -33,37 +33,42 @@ h2 {
 .home__title--options {
   width: 100%;
   height: 100%;
-  background-color: #d3d3d6;
+  background-color: #eeeeee;
   display: flex;
   align-items: center;
   gap: 3rem;
   padding-left: 4rem;
   border-radius: 0 0 0 1.5rem;
 }
-.home__title--options div{
+.home__title--options div {
   display: flex;
-  gap: .5rem;
+  gap: 0.5rem;
+}
+.home__title--options div > i {
+  font-size: 17px;
+  color: #5c5c5f;
 }
 .home__options {
   width: 100%;
-  height: 5.8rem;
-  /* background-color: #e5cafc; */
+  height: 5.1rem;
   display: flex;
   align-items: center;
   gap: 1.75rem;
   padding-left: 7.3rem;
 }
-.home__options div{
+.home__options .home__options--conter {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: .4rem;
+  gap: 0.4rem;
+  height: 5rem;
+  cursor: pointer;
 }
-.home__options div>p{
-  color: #848282;
+.home__options--conter:hover {
+  color: #5738ef;
+}
 
-}
 .home__options--icons {
   width: 2.2rem;
   height: 2.2rem;
@@ -74,10 +79,16 @@ h2 {
   border-radius: 100%;
   color: #0b032f;
 }
-
-#text__icon{
+.home__options--conter:hover .home__options--icons {
+  background-color: #2d0cd3f5;
+  color: #fff;
+  transition: 0.4s;
+}
+#text__icon {
+  width: 4rem;
   display: flex;
-  gap: 0rem;
+  gap: 0.2rem;
+  text-align: center;
 }
 .home__options--icon {
   font-size: 17px;
@@ -90,7 +101,6 @@ h2 {
   justify-content: center;
   align-items: center;
   background-image: linear-gradient(0, #a780ff 0%, #8554f7 100%);
-  /* padding: 2rem; */
 }
 .home__card--content {
   display: flex;

@@ -1,0 +1,27 @@
+[
+  {
+    "text": "Para ventas 01 800 518 9327",
+    "type": "solid",
+    "icon": "headphones"
+  },
+  {
+    "text": "Pasaporte",
+    "type": "solid",
+    "icon": "passport"
+  },
+  {
+    "text": "Iniciar Sesión",
+    "type": "solid",
+    "icon": "user"
+  },
+  {
+    "text": "Mis Viajes",
+    "type": "solid",
+    "icon": "suitcase"
+  },
+  {
+    "text": "Ayuda",
+    "type": "regular",
+    "icon": "circle-question"
+  }
+]

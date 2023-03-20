@@ -1,0 +1,59 @@
+[
+  {
+    "option": "Alojamiento",
+    "type": "solid",
+    "iconName": "bed"
+  },
+  {
+    "option": "Vuelos",
+    "type": "solid",
+    "iconName": "plane-departure"
+  },
+  {
+    "option": "Paquetes",
+    "type": "solid",
+    "iconName": "suitcase"
+  },
+  {
+    "option": "Ofertas",
+    "type": "solid",
+    "iconName": "fire-flame-curved"
+  },
+  {
+    "option": "Rentas",
+    "type": "solid",
+    "iconName": "house-chimney"
+  },
+  {
+    "option": "Actividades",
+    "type": "solid",
+    "iconName": "ticket"
+  },
+  {
+    "option": "Viajes Completos",
+    "type": "solid",
+    "iconName": "suitcase-rolling",
+    "textLarge": "text__icon"
+  },
+  {
+    "option": "Carros",
+    "type": "solid",
+    "iconName": "car-side"
+  },
+  {
+    "option": "Disney",
+    "type": "brands",
+    "iconName": "fort-awesome"
+  },
+  {
+    "option": "Asistencias",
+    "type": "solid",
+    "iconName": "suitcase-medical"
+  },
+  {
+    "option": "Traslados",
+    "type": "solid",
+    "iconName": "truck-fast"
+  }
+
+]

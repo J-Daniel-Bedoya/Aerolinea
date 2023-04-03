@@ -49,7 +49,7 @@ function App() {
         </div>
         <div className="home__title--options">
           {optionsConfig.map((config, i) => (
-            <div key={i}>
+            <div key={i} className="home__title--text">
               <i 
                 className={`fa-${config.type} fa-${config.icon}`}
                 style={{color: config.icon === "passport" && "#f06b06f5"}}

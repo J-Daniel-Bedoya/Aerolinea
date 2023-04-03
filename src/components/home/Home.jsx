@@ -14,8 +14,7 @@ const Home = () => {
   const dispatch = useDispatch();
   const mostrarSeleccionPais = useSelector((state) => state.infoPaisApi);
   // esta es la url de la api mymapi
-  const urlPais =
-    "https://api.mymappi.com/v2/geocoding/reverse?apikey=c829b7f1-0151-42ab-83b8-a7d1c7528d81";
+  
   // const apiInfoVuelos = "https://server-vuelos-production.up.railway.app/api/vuelos"
   const apiInfoVuelos = "https://apiaerolinea-production.up.railway.app/api/v1";
 
@@ -104,20 +103,16 @@ const Home = () => {
       const coordenadas = pos.coords;
       const latitud = coordenadas.latitude;
       const longitud = coordenadas.longitude;
-
+      
       paisOrigenGeolocalizacion(latitud, longitud);
     }
     dispatch(setMostrarSelccionPais());
     getPeticionApiVuelos();
   }, []);
   // esta funcion consume la APPI de mymappi para poder obtener el nombre del país de donde recide la persona
-  const paisOrigenGeolocalizacion = (log, lat) => {
-    axios
-      .get(`${urlPais}&lat=${log}&lon=${lat}`)
-      .then((res) => {
-        setPaisOrigen(res.data.data.address.country);
-      })
-      .catch((error) => console.log(error));
+  const paisOrigenGeolocalizacion = (lat, log) => {
+    console.log({lat, log});
+    
   };
   // esta funcion cuando se ejecuta me trae el nombre del país elegido
   const seleccionPais = (dato) => {
@@ -152,7 +147,7 @@ const Home = () => {
   };
 
 
-  // console.log(options);
+  console.log(paisOrigen);
 
   return (
     <div className="Home">

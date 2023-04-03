@@ -24,3 +24,6 @@ body{
 f{
     background-color: #4925ec;
 }
+.home__title--text {
+    cursor: pointer;
+}

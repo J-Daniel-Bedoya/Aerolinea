@@ -16,6 +16,7 @@ const SelecionarPaisDestino = ({
     axios.get(`${apiAerolineaPais}/pais`)
     .then(res => {
       setPaises(res.data)
+      console.log(res.data);
     })
 
   }, []);

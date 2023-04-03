@@ -34,7 +34,7 @@ const InfoRecervacion = ({apiVuelos}) => {
           <p>Tu reservacion</p>
           <div className="info__div">
             <div className="info__pasajeros" id="info__pasajeros">
-              <p>pasajeros</p>
+              <p className='text__pasajeros'>Pasajeros</p>
               <div>
                 <p>{apiVuelos?.adultos} adultos</p>
                 <p>{apiVuelos?.niños} niños</p>

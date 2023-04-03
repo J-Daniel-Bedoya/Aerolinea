@@ -38,7 +38,7 @@ const VuelosSalida = ({ apiVuelos }) => {
           <div
             onClick={() => maletas(120.0, 1)}
             style={{
-              backgroundColor: color === 1 && "#a789c2",
+              backgroundColor: color === 1 && "#4925ec",
               color: color === 1 && "#fff",
             }}
             className="maleta1"
@@ -49,7 +49,7 @@ const VuelosSalida = ({ apiVuelos }) => {
           <div
             onClick={() => maletas(240.0, 2)}
             style={{
-              backgroundColor: color === 2 && "#a789c2",
+              backgroundColor: color === 2 && "#4925ec",
               color: color === 2 && "#fff",
             }}
             className="maleta2"
@@ -60,7 +60,7 @@ const VuelosSalida = ({ apiVuelos }) => {
           <div
             onClick={() => maletas(320.0, 3)}
             style={{
-              backgroundColor: color === 3 && "#a789c2",
+              backgroundColor: color === 3 && "#4925ec",
               color: color === 3 && "#fff",
             }}
             className="maleta3"
